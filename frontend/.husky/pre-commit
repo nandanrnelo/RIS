@@ -1,0 +1,5 @@
+echo "[-------------- Auto-formatting with Prettier --------------]"
+npm run format
+git add -u
+echo "[---------------- Running ESLint ----------------]"
+npm run lint
