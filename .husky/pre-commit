@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+echo "[-------------- Auto-formatting with Prettier --------------]"
+npm --prefix frontend run format
+git add -u
+echo "[---------------- Running ESLint ----------------]"
+npm --prefix frontend run lint
