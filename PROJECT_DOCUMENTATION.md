@@ -32,8 +32,18 @@ Below is the verified, up-to-date workspace directory tree:
 │   ├── app/                                # Next.js 16 App Router directory
 │   │   ├── favicon.ico                     # Standard browser tab favicon
 │   │   ├── globals.css                     # Global styles, Tailwind v4 imports & CSS variables
-│   │   ├── layout.tsx                      # Root HTML layout with Geist font definition
-│   │   └── page.tsx                        # Root homepage landing view (Route: /)
+│   │   ├── layout.tsx                      # Root HTML layout integrating Navbar, Footer & Google Font Poppins
+│   │   └── page.tsx                        # Root homepage landing view (Route: /) with section anchors
+│   ├── components/                         # Reusable UI and application components
+│   │   └── common/                         # Common shared layouts & navigation
+│   │       ├── Footer.tsx                  # Responsive global site footer
+│   │       └── Navbar.tsx                  # Fully responsive top navigation bar & mobile drawer
+│   ├── constants/                          # Shared constants & design tokens
+│   │   └── colour.tsx                      # Brand palette color constants (cream, primaryDark, accent, secondary)
+│   ├── data/                               # Application datasets and navigation configuration
+│   │   ├── footerData.ts                   # Structured configuration for footer content, links & contacts
+│   │   ├── navbarData.ts                   # Navigation menu items configuration and interface
+│   │   └── socialMediaData.ts              # Social media profile links, platforms, and metadata
 │   ├── public/                             # Public static assets (images, icons, SVGs)
 │   ├── types/                              # Shared custom TypeScript definitions & interfaces
 │   ├── .gitignore                          # Git ignore list for frontend dependencies & build outputs
@@ -99,16 +109,41 @@ Detailed description of core project files and their operational purpose:
 
 ### Frontend Application Structure (`frontend/app/`)
 - **[app/layout.tsx]**:
-  - Root layout component configuring Google Fonts (`Geist` and `Geist Mono`).
-  - Sets root `html` and `body` classes with full height antialiasing.
+  - Root layout component configuring Google Font **Poppins** (`subsets: ["latin"]`, weights `300` through `800`).
+  - Sets root `html` and `body` with `--font-poppins` and `font-sans` classes.
+  - Embeds global `<Navbar />` and `<Footer />` shells around page content.
   - Injects `globals.css`.
-- **[app/globals.css](file:///d:/RIS/frontend/app/globals.css)**:
+- **[app/globals.css]**:
   - Imports Tailwind CSS v4 (`@import "tailwindcss";`).
   - Configures CSS variables for light/dark mode backgrounds (`#ffffff` / `#0a0a0a`) and foregrounds (`#171717` / `#ededed`).
-  - Defines `@theme inline` mapping `--color-background`, `--color-foreground`, `--font-sans`, and `--font-mono`.
-- **[app/page.tsx](file:///d:/RIS/frontend/app/page.tsx)**:
+  - Defines `@theme inline` mapping `--color-background`, `--color-foreground`, and `--font-sans: var(--font-poppins), sans-serif;`.
+  - Sets global `body` typography to use `var(--font-poppins), sans-serif;`.
+- **[app/page.tsx]**:
   - Main landing view component for route `/`.
-- **[types/](file:///d:/RIS/frontend/types)**:
+  - Showcases interactive sections corresponding to navigation items: Home (`#home`), About Us (`#about`), Products (`#products`), Quality (`#quality`), and Industrial Services (`#services`).
+- **[components/common/Navbar.tsx]**:
+  - Client component featuring a full-width **Modern UI Sticky Navigation Bar** (non-pill design).
+  - Sticky header (`sticky top-0`) with subtle frosted glassmorphic backdrop (`backdrop-blur-xl`), hairline border, and dynamic scroll elevation shadow.
+  - Top-left geometric industrial brand emblem with Poppins typography (`RIS Industries`).
+  - Desktop navigation items: **Home**, **About Us**, **Products**, **Quality**, and **Industrial Services**, with active indicator bar and smooth hover highlights.
+  - Right modern squircle **Contact Us** action button with arrow hover micro-animation.
+  - Full-width mobile sliding overlay drawer with touch navigation cards, icons, descriptions, and direct phone support.
+- **[components/common/Footer.tsx]**:
+  - Client component implementing a modern structured industrial footer with a clean, borderless crescent moon curved top boundary flowing seamlessly from top-left to right directly into `COLOUR_PALETTE.primaryDark`.
+  - Column 1: Company Profile with a dedicated badge card housing the logo and ISO 9001:2015 certification subtext, followed by company summary paragraph and "...Read More" link.
+  - Column 2: "Quick Links" menu (About Us, Products, Industries Served, Quality, Contact Us).
+  - Column 3: "working hours" schedule.
+  - Column 4: "Get In Touch" with email, phone, and 4 circular brand social media buttons (Facebook, Twitter/X, Instagram, LinkedIn).
+  - Bottom bar: Full-width centered copyright notice.
+- **[constants/colour.tsx]**:
+  - Defines standard project brand color tokens: `cream` (`#F5EFE3`), `primaryDark` (`#4F5B2A`), `accent` (`#B8892D`), and `secondary` (`#D8C9A8`).
+- **[data/footerData.ts]**:
+  - Centralized dataset and TypeScript interface `FooterConfig` defining company profile, ISO certification, quick links, working hours, get-in-touch title, and copyright strings (with contact and social media information cleanly decoupled into `data/socialMediaData.ts`).
+- **[data/navbarData.ts]**:
+  - Centralized dataset and TypeScript interface `NavItem` configuring all primary navigation links, labels, routes, icons, and descriptions.
+- **[data/socialMediaData.ts]**:
+  - Centralized dataset and TypeScript interfaces `SocialMediaLink` and `ContactDetails` configuring official contact details (`email: info@ris-industries.com`, `phone: 044 42805983`) as well as external social media profiles (Facebook, Twitter/X, Instagram, LinkedIn).
+- **[types/]**:
   - Dedicated folder for application TypeScript interfaces, DTOs, and component prop definitions.
 
 ---
@@ -151,3 +186,19 @@ graph TD
 ---
 
 ## 6. Change Log
+
+| Date (YYYY-MM-DD) | Summary of Changes | Files Touched / Created | Next Steps / Notes |
+| :--- | :--- | :--- | :--- |
+| 2026-10-16 | Cleaned up `data/footerData.ts` by removing unused `SocialLink` interface and redundant `email`, `phone`, and `socials` properties from `getInTouch` in `FooterConfig` and `FOOTER_DATA`, fully delegating them to `data/socialMediaData.ts`. | `frontend/data/footerData.ts`<br>`PROJECT_DOCUMENTATION.md` | Proceed with next feature or page requirements. |
+| 2026-10-16 | Added `CONTACT_DETAILS` (official email and phone number) to `data/socialMediaData.ts` and updated `Footer.tsx` to dynamically bind email and phone contacts to this dataset. | `frontend/data/socialMediaData.ts`<br>`frontend/components/common/Footer.tsx`<br>`PROJECT_DOCUMENTATION.md` | Connect contact forms or additional contact channels if required. |
+| 2026-10-16 | Created centralized dataset `data/socialMediaData.ts` with TypeScript interface `SocialMediaLink` and connected it to `Footer.tsx` for dynamic rendering of social media action buttons. | `frontend/data/socialMediaData.ts`<br>`frontend/components/common/Footer.tsx`<br>`PROJECT_DOCUMENTATION.md` | Add additional platform links or analytics tracking if desired. |
+| 2026-10-16 | Removed the brown/secondary border stroke and layered accent fills from the top curve of `Footer.tsx`, leaving a clean, seamless moon-crescent curve that directly merges with the dark green footer body. | `frontend/components/common/Footer.tsx`<br>`PROJECT_DOCUMENTATION.md` | Proceed with next feature or page requirements. |
+| 2026-10-16 | Redesigned the top border of `Footer.tsx` with an integrated sweeping crescent moon curve flowing seamlessly from top-left to right, with multi-layered brand accents in `COLOUR_PALETTE.secondary` and `COLOUR_PALETTE.accent` and transparent container separation. | `frontend/components/common/Footer.tsx`<br>`PROJECT_DOCUMENTATION.md` | Proceed with next feature or page requirements. |
+| 2026-10-16 | Completely removed the "Go To Top" trigger, its vertical divider, and unused `scrollToTop` handler / `ArrowUp` icon import from `Footer.tsx`. | `frontend/components/common/Footer.tsx`<br>`PROJECT_DOCUMENTATION.md` | Proceed with next feature or page requirements. |
+| 2026-10-16 | Refactored `Footer.tsx` to strictly and exclusively use the repository's brand `COLOUR_PALETTE` (`primaryDark: #4F5B2A`, `cream: #F5EFE3`, `accent: #B8892D`, `secondary: #D8C9A8`), replacing non-palette tones with cohesive brand palette styling across the wave banner, logo badge, text, links, social circles, and "Go To Top" trigger. | `frontend/components/common/Footer.tsx`<br>`PROJECT_DOCUMENTATION.md` | Align any upcoming custom sections with `COLOUR_PALETTE`. |
+| 2026-10-16 | Implemented structured footer matching user design reference with curved wave top transition, white logo card with ISO certification, quick links, working hours, get in touch with circular social buttons, and vertical "Go To Top" trigger. Created `data/footerData.ts`. | `frontend/components/common/Footer.tsx`<br>`frontend/data/footerData.ts`<br>`PROJECT_DOCUMENTATION.md` | Add interactive newsletter signup or integrate live social feeds if required. |
+| 2026-10-16 | Redesigned `Navbar.tsx` from floating pill to a sleek full-width **Modern UI Sticky Header** with frosted backdrop blur, hairline border, active underline indicators, squircle "Contact Us" button, and mobile full-height sliding drawer. Integrated `data/navbarData.ts` and normalized `layout.tsx` padding. | `frontend/components/common/Navbar.tsx`<br>`frontend/data/navbarData.ts`<br>`frontend/app/layout.tsx`<br>`PROJECT_DOCUMENTATION.md` | Build out interior route pages or integrate dynamic menu features. |
+| 2026-10-16 | Updated `Navbar.tsx` CTA action button from "Get a Quote" to "Contact Us" across both desktop floating pill and mobile expandable menu island. | `frontend/components/common/Navbar.tsx`<br>`PROJECT_DOCUMENTATION.md` | Connect `/contact` route or modal as required. |
+| 2026-10-16 | Redesigned `Navbar.tsx` into a modern **Floating Glassmorphic Pill** navbar with frosted backdrop blur, rounded-full capsule structure, smooth active/hover pill indicators, compact "Get a Quote" pill CTA, and an expandable mobile glass island dropdown. Adjusted `layout.tsx` top padding. | `frontend/components/common/Navbar.tsx`<br>`frontend/app/layout.tsx`<br>`PROJECT_DOCUMENTATION.md` | Add interactive page animations or build out route destinations. |
+| 2026-10-16 | Configured Google Font **Poppins** across the entire application via `next/font/google`, updating `layout.tsx` (weights 300–800) and `globals.css` (`--font-sans: var(--font-poppins)` and `body` font family). | `frontend/app/layout.tsx`<br>`frontend/app/globals.css`<br>`PROJECT_DOCUMENTATION.md` | Build out interior route pages or add component-level typography tokens as needed. |
+| 2026-10-16 | Implemented fully responsive top navigation bar component (`Navbar.tsx`) with industrial SVG logo, navigation links (Home, About Us, Products, Quality, Industrial Services), and mobile slide-down drawer. Integrated `Navbar` and `Footer` into `layout.tsx`, added responsive section showcase to `page.tsx`, and documented color palette. | `frontend/components/common/Navbar.tsx`<br>`frontend/components/common/Footer.tsx`<br>`frontend/app/layout.tsx`<br>`frontend/app/page.tsx`<br>`PROJECT_DOCUMENTATION.md` | Create dedicated sub-pages (`/about`, `/products`, `/quality`, `/services`, `/contact`) or connect dynamic CMS/backend data. |
