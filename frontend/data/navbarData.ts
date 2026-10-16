@@ -1,11 +1,5 @@
 import type React from "react";
-import {
-  Home,
-  Users,
-  Package,
-  ShieldCheck,
-  Wrench,
-} from "lucide-react";
+import { Home, Users, Package, ShieldCheck, Wrench } from "lucide-react";
 
 export interface NavItem {
   label: string;

@@ -3,13 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Menu,
-  X,
-  ChevronRight,
-  ArrowRight,
-  Phone,
-} from "lucide-react";
+import { Menu, X, ChevronRight, ArrowRight, Phone } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { NAV_ITEMS } from "@/data/navbarData";
 
@@ -96,12 +90,7 @@ export default function Navbar() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <circle
-                cx="16"
-                cy="16"
-                r="3"
-                fill={COLOUR_PALETTE.accent}
-              />
+              <circle cx="16" cy="16" r="3" fill={COLOUR_PALETTE.accent} />
               <path
                 d="M16 7V11M16 21V25M8 12L11.5 14M20.5 18L24 20M8 20L11.5 18M20.5 14L24 12"
                 stroke={COLOUR_PALETTE.cream}
@@ -114,7 +103,7 @@ export default function Navbar() {
           {/* Brand Typography */}
           <div className="flex flex-col">
             <span
-              className="text-2xl font-black tracking-tight leading-none"
+              className="text-2xl leading-none font-black tracking-tight"
               style={{ color: COLOUR_PALETTE.primaryDark }}
             >
               RIS
@@ -126,7 +115,7 @@ export default function Navbar() {
               </span>
             </span>
             <span
-              className="text-[10px] font-semibold tracking-widest uppercase opacity-75 mt-0.5"
+              className="mt-0.5 text-[10px] font-semibold tracking-widest uppercase opacity-75"
               style={{ color: COLOUR_PALETTE.primaryDark }}
             >
               Precision Engineering & Services
@@ -136,7 +125,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links */}
         <nav
-          className="hidden items-center gap-1 xl:gap-2 lg:flex"
+          className="hidden items-center gap-1 lg:flex xl:gap-2"
           aria-label="Desktop Navigation"
         >
           {NAV_ITEMS.map((item) => {
@@ -148,10 +137,10 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`relative px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-200 rounded-lg group ${
+                className={`group relative rounded-lg px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-200 ${
                   isActive
                     ? "font-bold"
-                    : "opacity-85 hover:opacity-100 hover:bg-[#4F5B2A]/8"
+                    : "opacity-85 hover:bg-[#4F5B2A]/8 hover:opacity-100"
                 }`}
                 style={{
                   color: isActive
@@ -163,10 +152,10 @@ export default function Navbar() {
 
                 {/* Modern active indicator bar */}
                 <span
-                  className={`absolute bottom-0 left-4 right-4 h-0.5 rounded-full transition-all duration-300 ${
+                  className={`absolute right-4 bottom-0 left-4 h-0.5 rounded-full transition-all duration-300 ${
                     isActive
-                      ? "opacity-100 scale-x-100"
-                      : "opacity-0 scale-x-0 group-hover:opacity-60 group-hover:scale-x-75"
+                      ? "scale-x-100 opacity-100"
+                      : "scale-x-0 opacity-0 group-hover:scale-x-75 group-hover:opacity-60"
                   }`}
                   style={{ backgroundColor: COLOUR_PALETTE.accent }}
                 />
@@ -180,7 +169,7 @@ export default function Navbar() {
           {/* Modern Contact Us Button (Desktop) */}
           <Link
             href="/contact"
-            className="group hidden items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold uppercase tracking-wider shadow-sm transition-all duration-200 hover:shadow-md hover:brightness-105 active:scale-95 sm:inline-flex"
+            className="group hidden items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold tracking-wider uppercase shadow-sm transition-all duration-200 hover:shadow-md hover:brightness-105 active:scale-95 sm:inline-flex"
             style={{
               backgroundColor: COLOUR_PALETTE.primaryDark,
               color: COLOUR_PALETTE.cream,
@@ -194,7 +183,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-200 lg:hidden focus:outline-hidden focus:ring-2 focus:ring-[#B8892D]"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-200 focus:ring-2 focus:ring-[#B8892D] focus:outline-hidden lg:hidden"
             style={{
               borderColor: `${COLOUR_PALETTE.secondary}90`,
               color: COLOUR_PALETTE.primaryDark,
@@ -204,10 +193,12 @@ export default function Navbar() {
             }}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
-            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              isOpen ? "Close navigation menu" : "Open navigation menu"
+            }
           >
             {isOpen ? (
-              <X className="h-5 w-5 transition-transform duration-200 rotate-90" />
+              <X className="h-5 w-5 rotate-90 transition-transform duration-200" />
             ) : (
               <Menu className="h-5 w-5" />
             )}
@@ -220,8 +211,8 @@ export default function Navbar() {
         id="mobile-menu"
         className={`fixed inset-x-0 top-20 bottom-0 z-40 transition-all duration-300 ease-in-out lg:hidden ${
           isOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none -translate-y-4"
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none -translate-y-4 opacity-0"
         }`}
         style={{
           backgroundColor: `${COLOUR_PALETTE.cream}FC`, // 99% solid frosted
@@ -230,7 +221,7 @@ export default function Navbar() {
         <div className="flex h-full flex-col justify-between overflow-y-auto px-4 py-6 sm:px-6">
           {/* Navigation Links List */}
           <div className="space-y-2">
-            <div className="px-2 pb-2 text-[11px] font-bold uppercase tracking-widest text-[#B8892D]">
+            <div className="px-2 pb-2 text-[11px] font-bold tracking-widest text-[#B8892D] uppercase">
               Navigation Menu
             </div>
             {NAV_ITEMS.map((item) => {
@@ -245,9 +236,7 @@ export default function Navbar() {
                   href={item.href}
                   onClick={closeMenu}
                   className={`flex items-center justify-between rounded-xl p-3.5 transition-all duration-200 ${
-                    isActive
-                      ? "shadow-xs"
-                      : "hover:bg-[#4F5B2A]/5"
+                    isActive ? "shadow-xs" : "hover:bg-[#4F5B2A]/5"
                   }`}
                   style={{
                     backgroundColor: isActive
@@ -274,7 +263,7 @@ export default function Navbar() {
                     </div>
                     <div>
                       <div
-                        className="text-base font-bold leading-tight"
+                        className="text-base leading-tight font-bold"
                         style={{
                           color: isActive
                             ? COLOUR_PALETTE.accent
@@ -285,7 +274,7 @@ export default function Navbar() {
                       </div>
                       {item.description && (
                         <div
-                          className="text-xs opacity-75 mt-0.5"
+                          className="mt-0.5 text-xs opacity-75"
                           style={{ color: COLOUR_PALETTE.primaryDark }}
                         >
                           {item.description}
@@ -305,13 +294,13 @@ export default function Navbar() {
 
           {/* Mobile Bottom Contact Actions */}
           <div
-            className="border-t pt-5 pb-8 space-y-3"
+            className="space-y-3 border-t pt-5 pb-8"
             style={{ borderColor: `${COLOUR_PALETTE.secondary}70` }}
           >
             <Link
               href="/contact"
               onClick={closeMenu}
-              className="flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-xs font-bold uppercase tracking-wider shadow-sm transition-all active:scale-98"
+              className="flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-xs font-bold tracking-wider uppercase shadow-sm transition-all active:scale-98"
               style={{
                 backgroundColor: COLOUR_PALETTE.primaryDark,
                 color: COLOUR_PALETTE.cream,

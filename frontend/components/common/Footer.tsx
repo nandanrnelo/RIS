@@ -10,12 +10,12 @@ export default function Footer() {
   return (
     <footer className="relative w-full overflow-hidden bg-transparent">
       {/* Top Sweeping Moon-Crescent Curve Transition */}
-      <div className="relative w-full overflow-hidden leading-none pointer-events-none -mb-px">
+      <div className="pointer-events-none relative -mb-px w-full overflow-hidden leading-none">
         <svg
           viewBox="0 0 1440 110"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-14 sm:h-20 lg:h-28 block"
+          className="block h-14 w-full sm:h-20 lg:h-28"
           preserveAspectRatio="none"
         >
           {/* Clean Moon-Crescent Boundary Curve joining seamlessly into the footer with no brown border */}
@@ -57,7 +57,7 @@ export default function Footer() {
           </div>
 
           {/* 4 Column Grid */}
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8 items-start">
+          <div className="grid grid-cols-1 items-start gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
             {/* Column 1: Company Profile with White/Cream Logo Card */}
             <div className="space-y-4 lg:col-span-4">
               {/* Logo Badge Card */}
@@ -107,7 +107,7 @@ export default function Footer() {
                     </div>
                     <div className="text-left">
                       <span
-                        className="block text-base font-black tracking-tight leading-tight"
+                        className="block text-base leading-tight font-black tracking-tight"
                         style={{ color: COLOUR_PALETTE.primaryDark }}
                       >
                         {FOOTER_DATA.company.name}
@@ -151,7 +151,7 @@ export default function Footer() {
             </div>
 
             {/* Column 2: Quick Links */}
-            <div className="space-y-4 lg:col-span-2 sm:col-span-1">
+            <div className="space-y-4 sm:col-span-1 lg:col-span-2">
               <h3
                 className="text-lg font-bold tracking-wide"
                 style={{ color: COLOUR_PALETTE.cream }}
@@ -185,7 +185,7 @@ export default function Footer() {
             </div>
 
             {/* Column 3: Working Hours */}
-            <div className="space-y-4 lg:col-span-3 sm:col-span-1">
+            <div className="space-y-4 sm:col-span-1 lg:col-span-3">
               <h3
                 className="text-lg font-bold tracking-wide"
                 style={{ color: COLOUR_PALETTE.cream }}
@@ -201,7 +201,7 @@ export default function Footer() {
             </div>
 
             {/* Column 4: Get In Touch */}
-            <div className="space-y-4 lg:col-span-3 sm:col-span-2">
+            <div className="space-y-4 sm:col-span-2 lg:col-span-3">
               <h3
                 className="text-lg font-bold tracking-wide"
                 style={{ color: COLOUR_PALETTE.cream }}
@@ -253,7 +253,7 @@ export default function Footer() {
               </div>
 
               {/* Circular Social Media Buttons dynamically loaded from data/socialMediaData.ts */}
-              <div className="pt-2 flex items-center gap-3">
+              <div className="flex items-center gap-3 pt-2">
                 {SOCIAL_MEDIA_LINKS.map((social) => (
                   <a
                     key={social.id}
@@ -267,16 +267,18 @@ export default function Footer() {
                       color: COLOUR_PALETTE.primaryDark,
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = COLOUR_PALETTE.accent;
+                      e.currentTarget.style.backgroundColor =
+                        COLOUR_PALETTE.accent;
                       e.currentTarget.style.color = COLOUR_PALETTE.cream;
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = COLOUR_PALETTE.cream;
+                      e.currentTarget.style.backgroundColor =
+                        COLOUR_PALETTE.cream;
                       e.currentTarget.style.color = COLOUR_PALETTE.primaryDark;
                     }}
                   >
                     {social.platform === "facebook" && (
-                      <span className="text-sm font-black font-serif">f</span>
+                      <span className="font-serif text-sm font-black">f</span>
                     )}
 
                     {social.platform === "twitter" && (
@@ -297,7 +299,14 @@ export default function Footer() {
                         strokeLinejoin="round"
                         viewBox="0 0 24 24"
                       >
-                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                        <rect
+                          width="20"
+                          height="20"
+                          x="2"
+                          y="2"
+                          rx="5"
+                          ry="5"
+                        />
                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                         <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                       </svg>
@@ -315,7 +324,7 @@ export default function Footer() {
 
         {/* Bottom Copyright Bar */}
         <div
-          className="border-t py-4 px-4 text-center transition-colors"
+          className="border-t px-4 py-4 text-center transition-colors"
           style={{
             borderColor: `${COLOUR_PALETTE.secondary}40`,
             backgroundColor: `${COLOUR_PALETTE.primaryDark}EE`,

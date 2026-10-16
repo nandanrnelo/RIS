@@ -24,11 +24,13 @@ Below is the verified, up-to-date workspace directory tree:
 
 ```text
 /RIS/
+├── .husky/                                 # Git automation hooks (active at root)
+│   └── pre-commit                          # Pre-commit hook script with POSIX shebang & npm --prefix frontend
 ├── .vscode/                                # VS Code workspace preferences
 │   └── settings.json                       # Workspace Git ignore limit configuration
 ├── frontend/                               # Next.js web application root
-│   ├── .husky/                             # Git pre-commit automation hooks
-│   │   └── pre-commit                      # Runs Prettier format & ESLint before commit
+│   ├── .husky/                             # Frontend-local husky assets
+│   │   └── pre-commit                      # Secondary hook reference
 │   ├── app/                                # Next.js 16 App Router directory
 │   │   ├── favicon.ico                     # Standard browser tab favicon
 │   │   ├── globals.css                     # Global styles, Tailwind v4 imports & CSS variables
@@ -57,6 +59,8 @@ Below is the verified, up-to-date workspace directory tree:
 │   ├── package-lock.json                   # Deterministic dependency lockfile
 │   ├── README.md                           # Standard Next.js getting started guide
 │   └── tsconfig.json                       # TypeScript compiler options & `@/*` path aliases
+├── package.json                            # Root workspace orchestration script proxies (dev, lint, format)
+└── skills-lock.json                        # Installed agent skill lock definitions
 ```
 
 ---
@@ -93,8 +97,13 @@ Detailed description of core project files and their operational purpose:
 - **[AGENTS.md]**: Workspace agent rules. Enforces mandatory pre-task inspection of `PROJECT_DOCUMENTATION.md` and mandatory post-task documentation updates.
 - **[skills-lock.json]**: Tracks external and local agent skills installed in `.agents/skills`.
 
+### Root Workspace Configuration
+- **[.husky/pre-commit]**: Root Git pre-commit hook with POSIX shebang (`#!/usr/bin/env sh`) that automatically formats code with `npm --prefix frontend run format`, stages modifications with `git add -u`, and runs ESLint checks with `npm --prefix frontend run lint`.
+- **[package.json]**: Root workspace orchestration `package.json` proxying standard lifecycle scripts (`dev`, `build`, `lint`, `format`, `format:check`) directly to the `frontend/` directory via `npm --prefix frontend run <script>`.
+- **[.git/config]**: Configured with `core.hooksPath = .husky` to ensure Git invokes the root pre-commit hook during `git commit`.
+
 ### Frontend Core Configuration
-- **[package.json]**:
+- **[frontend/package.json]**:
   - Runtime: Next.js `16.4.0`, React `19.3.0`, React DOM `19.3.0`.
   - Dev tools: Tailwind CSS `^4`, `@tailwindcss/turbopack` `^4`, TypeScript `^5`, ESLint `^9`, Prettier `^3.9.10`, Husky `^9.1.7`.
   - Scripts:
@@ -105,7 +114,7 @@ Detailed description of core project files and their operational purpose:
     - `npm run format:check`: Validates Prettier compliance without writing.
 - **[tsconfig.json]**: Configured with `@/*` path mapping to `./*` (resolves relative to `frontend/`), strict type checking, and ES2017+ target.
 - **[next.config.ts]**: Configures Turbopack loaders for Tailwind CSS v4 (`@tailwindcss/turbopack`), experimental agent feedback, component caching, and partial prefetching.
-- **[.husky/pre-commit]**: Pre-commit hook that automatically runs Prettier formatting, re-stages changed files, and runs ESLint before any git commit.
+- **[frontend/.husky/pre-commit]**: Pre-commit hook that automatically runs Prettier formatting with `npm --prefix frontend run format`, re-stages changed files with `git add -u`, and runs ESLint checks with `npm --prefix frontend run lint` before any git commit.
 
 ### Frontend Application Structure (`frontend/app/`)
 - **[app/layout.tsx]**:
@@ -189,6 +198,8 @@ graph TD
 
 | Date (YYYY-MM-DD) | Summary of Changes | Files Touched / Created | Next Steps / Notes |
 | :--- | :--- | :--- | :--- |
+| 2026-10-16 | Fixed Git on Windows hook execution error (`cannot spawn frontend/.husky/pre-commit`): created root `.husky/pre-commit` with explicit POSIX shebang (`#!/usr/bin/env sh`), updated `.git/config` to `hooksPath = .husky`, and verified proxy scripts in root `package.json`. | `.husky/pre-commit`<br>`.git/config`<br>`frontend/.husky/pre-commit`<br>`PROJECT_DOCUMENTATION.md` | Run `git add .` and `git commit` to verify the pre-commit hook formats and lints before committing. |
+| 2026-10-16 | Enabled Husky pre-commit hooks and npm workflows from the root `/ris` directory: configured Git `core.hooksPath = frontend/.husky`, updated `frontend/.husky/pre-commit` to use `npm --prefix frontend run ...`, and created a root `package.json` proxying `dev`, `lint`, and `format` commands directly into `frontend/`. | `.git/config`<br>`frontend/.husky/pre-commit`<br>`package.json`<br>`PROJECT_DOCUMENTATION.md` | Developers can now run `git commit`, `npm run format`, and `npm run lint` directly from `/ris`. |
 | 2026-10-16 | Cleaned up `data/footerData.ts` by removing unused `SocialLink` interface and redundant `email`, `phone`, and `socials` properties from `getInTouch` in `FooterConfig` and `FOOTER_DATA`, fully delegating them to `data/socialMediaData.ts`. | `frontend/data/footerData.ts`<br>`PROJECT_DOCUMENTATION.md` | Proceed with next feature or page requirements. |
 | 2026-10-16 | Added `CONTACT_DETAILS` (official email and phone number) to `data/socialMediaData.ts` and updated `Footer.tsx` to dynamically bind email and phone contacts to this dataset. | `frontend/data/socialMediaData.ts`<br>`frontend/components/common/Footer.tsx`<br>`PROJECT_DOCUMENTATION.md` | Connect contact forms or additional contact channels if required. |
 | 2026-10-16 | Created centralized dataset `data/socialMediaData.ts` with TypeScript interface `SocialMediaLink` and connected it to `Footer.tsx` for dynamic rendering of social media action buttons. | `frontend/data/socialMediaData.ts`<br>`frontend/components/common/Footer.tsx`<br>`PROJECT_DOCUMENTATION.md` | Add additional platform links or analytics tracking if desired. |
