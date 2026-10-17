@@ -12,9 +12,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "RIS Industries - Precision Industrial Engineering & Services",
+  title: "Reflex Industrial Solutions - Water Management & Chemical Solutions",
   description:
-    "Leading provider of high-precision industrial services, machinery, quality standards, and manufacturing solutions.",
+    "Reflex Industrial Solutions (RIS) is an elite water management agency catering to water-related solutions and chemical treatments across the entire gamut of industries.",
 };
 
 export default function RootLayout({
@@ -26,8 +26,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${poppins.variable} h-full font-sans antialiased`}
+      style={{ backgroundColor: "#F5EFE3" }}
     >
-      <body className="flex min-h-full flex-col font-sans">
+      <body
+        className="flex min-h-full flex-col font-sans"
+        style={{ backgroundColor: "#F5EFE3" }}
+      >
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -8,7 +8,7 @@
 
 ## 1. Project Overview
 
-- **Project Name**: RIS (Radiology Information System / Web Application)
+- **Project Name**: RIS (Reflex Industrial Solutions / Web Application)
 - **Primary Framework**: Next.js 16.4.0 (App Router) with React 19.3.0
 - **Language**: TypeScript 5 (Strict mode)
 - **Styling**: Tailwind CSS v4 (`@tailwindcss/turbopack`)
@@ -35,18 +35,29 @@ Below is the verified, up-to-date workspace directory tree:
 │   │   ├── favicon.ico                     # Standard browser tab favicon
 │   │   ├── globals.css                     # Global styles, Tailwind v4 imports & CSS variables
 │   │   ├── layout.tsx                      # Root HTML layout integrating Navbar, Footer & Google Font Poppins
-│   │   └── page.tsx                        # Root homepage landing view (Route: /) with section anchors
+│   │   └── page.tsx                        # Root homepage landing view (Route: /) with HeroBannerCarousel and supporting sections
 │   ├── components/                         # Reusable UI and application components
-│   │   └── common/                         # Common shared layouts & navigation
-│   │       ├── Footer.tsx                  # Responsive global site footer
-│   │       └── Navbar.tsx                  # Fully responsive top navigation bar & mobile drawer
+│   │   ├── common/                         # Common shared layouts & navigation
+│   │   │   ├── Footer.tsx                  # Responsive global site footer
+│   │   │   └── Navbar.tsx                  # Fully responsive top navigation bar & mobile drawer
+│   │   └── home/                           # Home screen modular sections
+│   │       ├── HeroBannerCarousel.tsx      # Split hero carousel (Left: content, Right: temporary banner visual)
+│   │       └── QuickServicesBar.tsx        # Floating curved services bar with 4 core industrial offerings & mouse indicator
 │   ├── constants/                          # Shared constants & design tokens
 │   │   └── colour.tsx                      # Brand palette color constants (cream, primaryDark, accent, secondary)
 │   ├── data/                               # Application datasets and navigation configuration
 │   │   ├── footerData.ts                   # Structured configuration for footer content, links & contacts
+│   │   ├── heroBannerData.ts               # Centralized dataset for hero slides, banner visuals, and 4 core industrial services
 │   │   ├── navbarData.ts                   # Navigation menu items configuration and interface
 │   │   └── socialMediaData.ts              # Social media profile links, platforms, and metadata
 │   ├── public/                             # Public static assets (images, icons, SVGs)
+│   │   └── images/                         # Static visual assets directory
+│   │       └── hero/                       # Authentic extracted hero banner imagery
+│   │           ├── banner-1.jpg            # Authentic banner 1 (mountain lake mirror reflection)
+│   │           ├── banner-2.jpg            # Authentic banner 2 (aquatic tree biosphere with fish)
+│   │           ├── cta-bg.jpg              # Authentic eco-friendly visual (planet Earth in crystal water droplet)
+│   │           ├── about-2.jpg             # Environmental green tree sprouting from water droplet
+│   │           └── service-1.jpg           # Technical engineer water inspection at industrial plant
 │   ├── types/                              # Shared custom TypeScript definitions & interfaces
 │   ├── .gitignore                          # Git ignore list for frontend dependencies & build outputs
 │   ├── .prettierignore                     # Files excluded from Prettier formatting
@@ -73,7 +84,7 @@ The web application uses the **Next.js 16 App Router**. All routes reside within
 
 | URL Path | File Location | Route Type | Description & Purpose |
 | :--- | :--- | :--- | :--- |
-| `/` | `frontend/app/page.tsx` | Server/Client Page | Default root landing page. Currently serves the initial homepage view. |
+| `/` | `frontend/app/page.tsx` | Server/Client Page | Default root landing page featuring split Hero banner carousel, overlapping curved QuickServicesBar with 4 core industrial water & chemical management offerings (Audits, Pretreatment, Support/Maintenance, Waste Management), and global site layout. |
 | *(Layout)* | `frontend/app/layout.tsx` | Root Layout | Global shell wrapping all routes; injects Geist Sans/Mono fonts and `globals.css`. |
 
 ### Route Creation Conventions
@@ -129,14 +140,30 @@ Detailed description of core project files and their operational purpose:
   - Sets global `body` typography to use `var(--font-poppins), sans-serif;`.
 - **[app/page.tsx]**:
   - Main landing view component for route `/`.
-  - Showcases interactive sections corresponding to navigation items: Home (`#home`), About Us (`#about`), Products (`#products`), Quality (`#quality`), and Industrial Services (`#services`).
+  - Seamlessly renders the split `<HeroBannerCarousel />` followed by the floating `<QuickServicesBar />` core services showcase.
+- **[components/home/QuickServicesBar.tsx]**:
+  - Client component implementing a dynamic, non-rectangular **Serpentine Hydro-Wave Stream** layout with scroll-driven parallax movement and staggered entrance animations.
+  - Seamless Transition: Seamlessly connects directly to the hero section with zero color boundary or dead gap, sharing the same solid `COLOUR_PALETTE.cream` (`#F5EFE3`) background with tight top padding (`pt-2 sm:pt-4`).
+  - Structure & Geometry: 4 standalone, organically sculpted pods (`rounded-[2.25rem] sm:rounded-[2.6rem]`) with individual curved wave crowns arranged with alternating staggered vertical wave elevations across the viewport.
+  - Scroll & Kinetic Motion: Connected via an ambient SVG serpentine spline conduit with dynamic dash-offset flow scrubbing on scroll, subtle alternating parallax vertical drifting, and floating background micro-droplets.
+  - Clean & Focused Content: Streamlined to focus exclusively on core service content per user request (step number badge, category pill, bespoke brand vector insignia on organic hydro-well, 2-line Poppins title, and concise service description), removing unnecessary telemetry progress bars and metric boxes.
+  - Data Integration: Dynamically bound to `QUICK_SERVICES_DATA` and `QuickServiceItem` directly imported from `frontend/data/heroBannerData.ts`.
+- **[components/home/HeroBannerCarousel.tsx]**:
+  - Client component implementing a split-layout hero banner carousel with dynamic typewriter character streaming and layout-stabilized vertical containers.
+  - Seamless Background: Rendered on uniform `COLOUR_PALETTE.cream` (`#F5EFE3`) with overflowing background blur mesh blobs removed to eliminate any harsh edge seam or color split with downstream sections.
+  - Left Column (`lg:col-span-7 xl:col-span-7`): Generously widened content container accommodating a clean 3-line headline with `whitespace-pre-line`, typewriter character streaming, dynamic slide eyebrow badge with pulsing beacon, fluid description paragraph, primary "Read More" CTA with nested micro-animated button-in-button trailing icon, secondary action link, next/prev arrow buttons, auto-play pause/resume toggle, and interactive thumbnail pill selectors with animated progress bar indicators. Sized with optimized vertical padding (`pt-6 sm:pt-8 lg:pt-10 pb-4 sm:pb-6`) without viewport-locking min-height constraints.
+  - Right Column (`lg:col-span-5 xl:col-span-5`): Double-bezel hardware enclosure (`rounded-[2rem]` shell + inner glass core) hosting clean, unobstructed high-resolution banner imagery with smooth cross-fade zoom transitions and sleek bottom-right slide switcher indicators.
+- **[data/heroBannerData.ts]**:
+  - Centralized master dataset configuring both the 3 core carousel banners (`HERO_SLIDES`, `HeroSlide`) and the embedded 4 core industrial services (`QUICK_SERVICES_DATA`, `QuickServiceItem`) including Water and Energy Audits, Pretreatment Systems, Support and Maintenance, and Chemical and Waste Management.
+- **[public/images/hero/]**:
+  - Directory hosting authentic extracted photography from TrueBlue Chem India directly reflecting each slide's content: `banner-1.jpg` (pristine mountain lake reflection for reliable chemical solutions), `banner-2.jpg` (aquatic tree biosphere with fish for tailored chemical innovation), `cta-bg.jpg` (Earth inside a crystal water droplet for sustainability & eco-friendly practices), and supporting operational assets (`about-2.jpg`, `service-1.jpg`).
 - **[components/common/Navbar.tsx]**:
-  - Client component featuring a full-width **Modern UI Sticky Navigation Bar** (non-pill design).
-  - Sticky header (`sticky top-0`) with subtle frosted glassmorphic backdrop (`backdrop-blur-xl`), hairline border, and dynamic scroll elevation shadow.
-  - Top-left geometric industrial brand emblem with Poppins typography (`RIS Industries`).
-  - Desktop navigation items: **Home**, **About Us**, **Products**, **Quality**, and **Industrial Services**, with active indicator bar and smooth hover highlights.
-  - Right modern squircle **Contact Us** action button with arrow hover micro-animation.
-  - Full-width mobile sliding overlay drawer with touch navigation cards, icons, descriptions, and direct phone support.
+  - Client component featuring a **Floating Glassmorphic Pill Navigation Bar** (`rounded-full` capsule geometry).
+  - Floating sticky container (`sticky top-3 sm:top-5`) with frosted glass backdrop blur (`backdrop-blur-xl sm:backdrop-blur-2xl`), white hairline reflection highlight, and dynamic multi-layer elevation shadow on scroll.
+  - Top-left circular industrial brand emblem with Poppins typography (`RIS Solutions`) and micro tagline.
+  - Center capsule channel hosting desktop navigation items (**Home**, **About Us**, **Products**, **Quality**, and **Industrial Services**) with rounded-full pill active highlights and gold accent beacon.
+  - Right rounded-full **Contact Us** action pill button with micro-animated trailing arrow.
+  - Responsive floating **Glass Island Dropdown** for mobile devices with rounded-2xl navigation cards, contact button, and direct phone link.
 - **[components/common/Footer.tsx]**:
   - Client component implementing a modern structured industrial footer with a clean, borderless crescent moon curved top boundary flowing seamlessly from top-left to right directly into `COLOUR_PALETTE.primaryDark`.
   - Column 1: Company Profile with a dedicated badge card housing the logo and ISO 9001:2015 certification subtext, followed by company summary paragraph and "...Read More" link.
@@ -198,7 +225,20 @@ graph TD
 
 | Date (YYYY-MM-DD) | Summary of Changes | Files Touched / Created | Next Steps / Notes |
 | :--- | :--- | :--- | :--- |
-| 2026-10-16 | Fixed Git on Windows hook execution error (`cannot spawn frontend/.husky/pre-commit`): created root `.husky/pre-commit` with explicit POSIX shebang (`#!/usr/bin/env sh`), updated `.git/config` to `hooksPath = .husky`, and verified proxy scripts in root `package.json`. | `.husky/pre-commit`<br>`.git/config`<br>`frontend/.husky/pre-commit`<br>`PROJECT_DOCUMENTATION.md` | Run `git add .` and `git commit` to verify the pre-commit hook formats and lints before committing. |
+| 2026-10-17 | Resolved ESLint `react-hooks/set-state-in-effect` pre-commit error in `HeroBannerCarousel.tsx` by relocating synchronous `setTypedTitle` and `setIsTyping` state updates inside the asynchronous `setTimeout` callback. Replaced `useEffect` mount-state in `QuickServicesBar.tsx` with React's idiomatic `useSyncExternalStore` hook, eliminating all cascading render lint errors while preserving 100% SSR hydration parity. | `frontend/components/home/HeroBannerCarousel.tsx`<br>`frontend/components/home/QuickServicesBar.tsx`<br>`PROJECT_DOCUMENTATION.md` | Commit hook (Prettier + ESLint) and SSR rendering now pass cleanly with zero errors. |
+| 2026-10-17 | Fixed blank black/void gap above and around the floating pill navbar. Removed default Tailwind dark mode root override (`--background: #0a0a0a`) from `globals.css` and enforced solid `COLOUR_PALETTE.cream` (`#F5EFE3`) across `html` and `body` in both `globals.css` and `layout.tsx`. Switched `Navbar.tsx` from `sticky` to `fixed top-3 sm:top-5 inset-x-0` floating overlay, and calibrated `HeroBannerCarousel.tsx` top padding to `pt-24 sm:pt-28 lg:pt-32` so the hero extends to the very top edge and the glassmorphic pill floats directly over the hero banner with zero gaps. | `frontend/app/globals.css`<br>`frontend/app/layout.tsx`<br>`frontend/components/common/Navbar.tsx`<br>`frontend/components/home/HeroBannerCarousel.tsx`<br>`PROJECT_DOCUMENTATION.md` | Top gap completely eliminated; pill floats seamlessly over uniform cream canvas. |
+| 2026-10-17 | Redesigned `Navbar.tsx` into a **Floating Glassmorphic Pill** navigation bar. Implemented capsule container geometry (`rounded-full`, `max-w-6xl`, `sticky top-3 sm:top-5`) with frosted glass backdrop blur (`backdrop-blur-xl sm:backdrop-blur-2xl`), multi-tier elevation shadow, circular industrial logo badge, rounded-full active pill link indicators with gold micro-beacon, rounded-full \"Contact Us\" action button with nested arrow circle, and an expandable floating mobile glass island dropdown. | `frontend/components/common/Navbar.tsx`<br>`PROJECT_DOCUMENTATION.md` | Floating glassmorphic pill design matches modern premium UI standards. |
+| 2026-10-17 | Removed redundant files `frontend/data/homebannerData.ts` and `frontend/data/quickServicesData.ts` per user request. Consolidated all home banner carousel slides (`HERO_SLIDES`, `HeroSlide`) and core industrial services (`QUICK_SERVICES_DATA`, `QuickServiceItem`) into the single authoritative file `frontend/data/heroBannerData.ts`. Updated `QuickServicesBar.tsx` import path to point directly to `heroBannerData.ts`. | `frontend/data/homebannerData.ts` *(deleted)*<br>`frontend/data/quickServicesData.ts` *(deleted)*<br>`frontend/data/heroBannerData.ts`<br>`frontend/components/home/QuickServicesBar.tsx`<br>`PROJECT_DOCUMENTATION.md` | Data structure streamlined with zero redundant data files. |
+| 2026-10-17 | Integrated the 4 core industrial quick services dataset (`QUICK_SERVICES_DATA`, `QuickServiceItem`) directly into `frontend/data/heroBannerData.ts` and created `frontend/data/homebannerData.ts` as an alias module re-exporting all hero banner and quick services items. Re-exported them in `quickServicesData.ts` to preserve backwards compatibility across all components. | `frontend/data/heroBannerData.ts`<br>`frontend/data/homebannerData.ts`<br>`frontend/data/quickServicesData.ts`<br>`PROJECT_DOCUMENTATION.md` | Data is now unified and accessible from `heroBannerData.ts`, `homebannerData.ts`, and `quickServicesData.ts`. |
+| 2026-10-17 | Eliminated the visual separation, harsh dark gradient seam, and excessive vertical gap between `HeroBannerCarousel.tsx` and `QuickServicesBar.tsx`. Removed overflowing background blur mesh blobs (`primaryDark`, `accent`, `secondary`) from both sections, removed `min-h-[calc(100vh-80px)]` from `HeroBannerCarousel`, and tightened top padding on `QuickServicesBar` to `pt-2 sm:pt-4`, unifying both sections into **ONE single, seamless, uniform `COLOUR_PALETTE.cream` (`#F5EFE3`) surface**. | `frontend/components/home/HeroBannerCarousel.tsx`<br>`frontend/components/home/QuickServicesBar.tsx`<br>`PROJECT_DOCUMENTATION.md` | Background color is completely continuous and gap-free across Hero and Capabilities stream. |
+| 2026-10-17 | Streamlined `QuickServicesBar.tsx` and `data/quickServicesData.ts` by removing the telemetry efficiency progress tracks, dual metric stat boxes, and "Explore Solution" buttons per user feedback. Maintained the non-rectangular **Serpentine Hydro-Wave Stream** layout featuring 4 standalone organically sculpted pods (`rounded-[2.25rem] sm:rounded-[2.6rem]`) with individual curved wave crowns, alternating staggered vertical elevations, scroll-driven parallax movement, and continuous SVG conduit spline with animated flow-dash scrubbing. Focused each pod cleanly on its step badge, category pill, bespoke brand vector insignia, 2-line title, and concise service description. | `frontend/components/home/QuickServicesBar.tsx`<br>`frontend/data/quickServicesData.ts`<br>`PROJECT_DOCUMENTATION.md` | Clean, non-rectangular curved pods and fluid scroll animation verified. |
+| 2026-10-16 | Rebalanced hero layout space distribution to allocate wide 7-column span (`lg:col-span-7 xl:col-span-7`) to left content and 5-column span (`lg:col-span-5 xl:col-span-5`) to right banner. Fixed Slide 1 headline to break cleanly across **exactly three lines** (`Empowering Industries with` / `Reliable Chemical` / `Solutions`) with `whitespace-pre-line` and calibrated container padding (`py-6 sm:py-8 lg:py-10`) to ensure 100% visibility above the fold with zero layout jitter. | `frontend/data/heroBannerData.ts`<br>`frontend/components/home/HeroBannerCarousel.tsx`<br>`PROJECT_DOCUMENTATION.md` | Verified in browser; 3-line layout and spacious proportions confirmed. |
+| 2026-10-16 | Integrated interactive typewriter character streaming with blinking accent cursor and kinetic upward entrance motion on `HeroBannerCarousel.tsx`. Configured reserved minimum heights (`min-h-[12.5rem]` headline, `min-h-[5.5rem]` description, `min-h-[calc(100vh-80px)]` hero container) to completely eliminate vertical layout shifts / screen bouncing during slide transitions. | `frontend/components/home/HeroBannerCarousel.tsx`<br>`PROJECT_DOCUMENTATION.md` | Height stability and kinetic typewriter transitions verified. |
+| 2026-10-16 | Cleaned up `HeroBannerCarousel.tsx` by removing the ISO certification floating top badge, bottom-left stat card overlay, and slide counter (`01 / 03`) per user feedback, leaving an unobstructed image view and minimalist slide switcher. | `frontend/components/home/HeroBannerCarousel.tsx`<br>`PROJECT_DOCUMENTATION.md` | Clean, modern visual presentation verified. |
+| 2026-10-16 | Standardized official company name to **Reflex Industrial Solutions** (RIS) across `heroBannerData.ts`, `HeroBannerCarousel.tsx`, `Navbar.tsx`, `footerData.ts`, `layout.tsx` metadata, and `PROJECT_DOCUMENTATION.md`. | `frontend/data/heroBannerData.ts`<br>`frontend/components/home/HeroBannerCarousel.tsx`<br>`frontend/components/common/Navbar.tsx`<br>`frontend/data/footerData.ts`<br>`frontend/app/layout.tsx`<br>`PROJECT_DOCUMENTATION.md` | Consistent official brand identity established across all views. |
+| 2026-10-16 | Extracted and linked authentic banner imagery directly from TrueBlue Chem India corresponding to each slide's topic: `banner-1.jpg` (mountain lake reflection for reliable chemical solutions), `banner-2.jpg` (aquatic tree biosphere with fish for tailored chemical innovation), and `cta-bg.jpg` (Earth enclosed in a crystal water droplet for eco-friendly sustainability). Updated `HeroBannerCarousel.tsx` with `unoptimized` prop and synced `heroBannerData.ts`. | `frontend/data/heroBannerData.ts`<br>`frontend/components/home/HeroBannerCarousel.tsx`<br>`frontend/public/images/hero/*`<br>`PROJECT_DOCUMENTATION.md` | Images now authentically reflect the message of all 3 banner slides. |
+| 2026-10-16 | Refactored the Home Screen (`page.tsx`) to exclusively showcase the split `HeroBannerCarousel` with left content and right temporary banner imagery; deleted unneeded sections (`StatsBar.tsx`, `SolutionsSection.tsx`, `GamutIndustries.tsx`, `SustainabilitySection.tsx`, `CtaBanner.tsx`) per user preference. | `frontend/app/page.tsx`<br>`frontend/components/home/HeroBannerCarousel.tsx`<br>`frontend/data/heroBannerData.ts`<br>`PROJECT_DOCUMENTATION.md` | Swap in final client banner images whenever they are ready. |
+| 2026-10-16 | Implemented split-layout Hero banner carousel (`HeroBannerCarousel.tsx`) with left-side content and right-side temporary banner visuals, matching user references across 3 message slides ("Solutions You Can Trust", "Innovation You Can Rely On", "Driving Sustainability Forward"). Created `data/heroBannerData.ts` and downloaded high-resolution temporary images to `public/images/hero/`. | `frontend/components/home/HeroBannerCarousel.tsx`<br>`frontend/data/heroBannerData.ts`<br>`frontend/public/images/hero/*`<br>`frontend/app/page.tsx`<br>`PROJECT_DOCUMENTATION.md` | Ready for production use or client image replacement. |
 | 2026-10-16 | Enabled Husky pre-commit hooks and npm workflows from the root `/ris` directory: configured Git `core.hooksPath = frontend/.husky`, updated `frontend/.husky/pre-commit` to use `npm --prefix frontend run ...`, and created a root `package.json` proxying `dev`, `lint`, and `format` commands directly into `frontend/`. | `.git/config`<br>`frontend/.husky/pre-commit`<br>`package.json`<br>`PROJECT_DOCUMENTATION.md` | Developers can now run `git commit`, `npm run format`, and `npm run lint` directly from `/ris`. |
 | 2026-10-16 | Cleaned up `data/footerData.ts` by removing unused `SocialLink` interface and redundant `email`, `phone`, and `socials` properties from `getInTouch` in `FooterConfig` and `FOOTER_DATA`, fully delegating them to `data/socialMediaData.ts`. | `frontend/data/footerData.ts`<br>`PROJECT_DOCUMENTATION.md` | Proceed with next feature or page requirements. |
 | 2026-10-16 | Added `CONTACT_DETAILS` (official email and phone number) to `data/socialMediaData.ts` and updated `Footer.tsx` to dynamically bind email and phone contacts to this dataset. | `frontend/data/socialMediaData.ts`<br>`frontend/components/common/Footer.tsx`<br>`PROJECT_DOCUMENTATION.md` | Connect contact forms or additional contact channels if required. |

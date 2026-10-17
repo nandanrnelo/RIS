@@ -24,10 +24,10 @@ export interface FooterConfig {
 
 export const FOOTER_DATA: FooterConfig = {
   company: {
-    name: "RIS Industries",
+    name: "Reflex Industrial Solutions",
     isoCertification: "AN ISO 9001:2015 CERTIFIED COMPANY",
     description:
-      "We are RIS Industries. An elite precision engineering and industrial services agency that caters to high-grade manufacturing, industrial machining, and technical solutions.",
+      "We are Reflex Industrial Solutions. An elite water management agency that caters to the water related problems of all types and diversity. The company offers water management solutions to entire gamut of industries.",
     readMoreLink: "/about",
   },
   quickLinksTitle: "Quick Links",
@@ -45,5 +45,6 @@ export const FOOTER_DATA: FooterConfig = {
   getInTouch: {
     title: "Get In Touch",
   },
-  copyright: "Copyright © 2025 by RIS Industries. All Rights Reserved.",
+  copyright:
+    "Copyright © 2025 by Reflex Industrial Solutions. All Rights Reserved.",
 };

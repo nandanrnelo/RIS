@@ -12,7 +12,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Dynamic elevation and frosted background intensity on scroll
+  // Elevate glass shadow and blur intensity on scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 15);
@@ -46,32 +46,35 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled
-          ? "border-b shadow-[0_4px_24px_rgba(79,91,42,0.08)] backdrop-blur-xl"
-          : "border-b backdrop-blur-md"
-      }`}
-      style={{
-        backgroundColor: isScrolled
-          ? `${COLOUR_PALETTE.cream}F2` // 95% opacity
-          : `${COLOUR_PALETTE.cream}E6`, // 90% opacity
-        borderColor: isScrolled
-          ? `${COLOUR_PALETTE.secondary}99`
-          : `${COLOUR_PALETTE.secondary}50`,
-      }}
-    >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Top-Left Logo */}
+    <header className="pointer-events-none fixed inset-x-0 top-3 z-50 w-full px-3 transition-all duration-300 sm:top-5 sm:px-6 lg:px-8">
+      {/* ================= FLOATING GLASSMORPHIC PILL CONTAINER ================= */}
+      <div
+        className={`pointer-events-auto relative mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full px-3.5 transition-all duration-300 sm:h-[4.5rem] sm:px-6 2xl:max-w-7xl ${
+          isScrolled
+            ? "shadow-[0_12px_36px_rgba(79,91,42,0.14),0_2px_12px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(255,255,255,0.8)] backdrop-blur-2xl"
+            : "shadow-[0_8px_28px_rgba(79,91,42,0.08),inset_0_1px_1px_rgba(255,255,255,0.7)] backdrop-blur-xl"
+        }`}
+        style={{
+          backgroundColor: isScrolled
+            ? `${COLOUR_PALETTE.cream}E6` // 90% frosted cream
+            : `${COLOUR_PALETTE.cream}BF`, // 75% translucent glass cream
+          border: `1px solid ${
+            isScrolled
+              ? `${COLOUR_PALETTE.secondary}90`
+              : "rgba(255, 255, 255, 0.65)"
+          }`,
+        }}
+      >
+        {/* ================= LEFT: BRAND EMBLEM & LOGO ================= */}
         <Link
           href="/"
           onClick={closeMenu}
-          className="group flex items-center gap-3 transition-opacity duration-200 hover:opacity-95"
-          aria-label="RIS Industries Homepage"
+          className="group flex items-center gap-2.5 transition-opacity duration-200 hover:opacity-95 sm:gap-3"
+          aria-label="Reflex Industrial Solutions Homepage"
         >
-          {/* Modern Geometric Industrial Emblem */}
+          {/* Rounded-Full Industrial Shield Emblem */}
           <div
-            className="flex h-11 w-11 items-center justify-center rounded-xl shadow-xs transition-transform duration-300 group-hover:scale-105"
+            className="flex h-10 w-10 items-center justify-center rounded-full shadow-xs transition-transform duration-300 group-hover:scale-105 sm:h-11 sm:w-11"
             style={{
               backgroundColor: COLOUR_PALETTE.primaryDark,
               border: `1.5px solid ${COLOUR_PALETTE.accent}`,
@@ -81,7 +84,7 @@ export default function Navbar() {
               viewBox="0 0 32 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 transition-transform duration-500 group-hover:rotate-45"
+              className="h-5 w-5 transition-transform duration-500 group-hover:rotate-45 sm:h-5.5 sm:w-5.5"
             >
               <polygon
                 points="16,3 28,10 28,22 16,29 4,22 4,10"
@@ -103,29 +106,36 @@ export default function Navbar() {
           {/* Brand Typography */}
           <div className="flex flex-col">
             <span
-              className="text-2xl leading-none font-black tracking-tight"
+              className="flex items-center text-xl leading-none font-black tracking-tight sm:text-2xl"
               style={{ color: COLOUR_PALETTE.primaryDark }}
             >
               RIS
               <span
-                className="ml-1.5 text-xs font-bold tracking-widest uppercase"
-                style={{ color: COLOUR_PALETTE.accent }}
+                className="ml-1.5 rounded-full px-2 py-0.5 text-[9px] font-bold tracking-widest uppercase sm:text-[10px]"
+                style={{
+                  backgroundColor: `${COLOUR_PALETTE.accent}20`,
+                  color: COLOUR_PALETTE.accent,
+                }}
               >
-                Industries
+                Solutions
               </span>
             </span>
             <span
-              className="mt-0.5 text-[10px] font-semibold tracking-widest uppercase opacity-75"
+              className="xs:inline mt-0.5 hidden text-[9px] font-semibold tracking-wider uppercase opacity-75 sm:text-[10px]"
               style={{ color: COLOUR_PALETTE.primaryDark }}
             >
-              Precision Engineering & Services
+              Reflex Industrial Solutions
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* ================= CENTER: PILL NAVIGATION LINKS (DESKTOP) ================= */}
         <nav
-          className="hidden items-center gap-1 lg:flex xl:gap-2"
+          className="hidden items-center gap-1 rounded-full p-1 lg:flex"
+          style={{
+            backgroundColor: `${COLOUR_PALETTE.secondary}25`,
+            border: `1px solid ${COLOUR_PALETTE.secondary}40`,
+          }}
           aria-label="Desktop Navigation"
         >
           {NAV_ITEMS.map((item) => {
@@ -137,58 +147,60 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`group relative rounded-lg px-4 py-2 text-sm font-semibold tracking-wide transition-all duration-200 ${
+                className={`relative rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-300 xl:text-sm ${
                   isActive
-                    ? "font-bold"
-                    : "opacity-85 hover:bg-[#4F5B2A]/8 hover:opacity-100"
+                    ? "text-white shadow-sm"
+                    : "text-neutral-700 hover:bg-black/5 hover:text-neutral-900"
                 }`}
                 style={{
-                  color: isActive
+                  backgroundColor: isActive
                     ? COLOUR_PALETTE.primaryDark
-                    : COLOUR_PALETTE.primaryDark,
+                    : "transparent",
+                  color: isActive ? "#FFFFFF" : COLOUR_PALETTE.primaryDark,
                 }}
               >
                 <span>{item.label}</span>
-
-                {/* Modern active indicator bar */}
-                <span
-                  className={`absolute right-4 bottom-0 left-4 h-0.5 rounded-full transition-all duration-300 ${
-                    isActive
-                      ? "scale-x-100 opacity-100"
-                      : "scale-x-0 opacity-0 group-hover:scale-x-75 group-hover:opacity-60"
-                  }`}
-                  style={{ backgroundColor: COLOUR_PALETTE.accent }}
-                />
+                {isActive && (
+                  <span
+                    className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full"
+                    style={{ backgroundColor: COLOUR_PALETTE.accent }}
+                  />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Trigger */}
-        <div className="flex items-center gap-3">
-          {/* Modern Contact Us Button (Desktop) */}
+        {/* ================= RIGHT: PILL CTA & MOBILE HAMBURGER ================= */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Contact Us Pill Button */}
           <Link
             href="/contact"
-            className="group hidden items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold tracking-wider uppercase shadow-sm transition-all duration-200 hover:shadow-md hover:brightness-105 active:scale-95 sm:inline-flex"
+            className="group hidden items-center gap-2 rounded-full py-2.5 pr-3.5 pl-5 text-xs font-bold tracking-wider uppercase shadow-md transition-all duration-300 hover:shadow-lg hover:brightness-105 active:scale-95 sm:inline-flex"
             style={{
               backgroundColor: COLOUR_PALETTE.primaryDark,
               color: COLOUR_PALETTE.cream,
             }}
           >
             <span>Contact Us</span>
-            <ArrowRight className="h-3.5 w-3.5 text-[#B8892D] transition-transform duration-200 group-hover:translate-x-1" />
+            <span
+              className="flex h-6 w-6 items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:translate-x-0.5"
+              style={{ backgroundColor: COLOUR_PALETTE.accent }}
+            >
+              <ArrowRight className="h-3.5 w-3.5" />
+            </span>
           </Link>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Hamburger Pill Trigger */}
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-200 focus:ring-2 focus:ring-[#B8892D] focus:outline-hidden lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-200 focus:ring-2 focus:ring-[#B8892D] focus:outline-hidden sm:h-11 sm:w-11 lg:hidden"
             style={{
               borderColor: `${COLOUR_PALETTE.secondary}90`,
               color: COLOUR_PALETTE.primaryDark,
               backgroundColor: isOpen
-                ? `${COLOUR_PALETTE.secondary}40`
+                ? `${COLOUR_PALETTE.secondary}50`
                 : "transparent",
             }}
             aria-expanded={isOpen}
@@ -204,26 +216,26 @@ export default function Navbar() {
             )}
           </button>
         </div>
-      </div>
 
-      {/* Mobile Sliding Navigation Overlay */}
-      <div
-        id="mobile-menu"
-        className={`fixed inset-x-0 top-20 bottom-0 z-40 transition-all duration-300 ease-in-out lg:hidden ${
-          isOpen
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none -translate-y-4 opacity-0"
-        }`}
-        style={{
-          backgroundColor: `${COLOUR_PALETTE.cream}FC`, // 99% solid frosted
-        }}
-      >
-        <div className="flex h-full flex-col justify-between overflow-y-auto px-4 py-6 sm:px-6">
-          {/* Navigation Links List */}
-          <div className="space-y-2">
-            <div className="px-2 pb-2 text-[11px] font-bold tracking-widest text-[#B8892D] uppercase">
-              Navigation Menu
+        {/* ================= MOBILE FLOATING GLASS ISLAND DROPDOWN ================= */}
+        <div
+          id="mobile-menu"
+          className={`absolute inset-x-0 top-[calc(100%+0.75rem)] mx-auto w-full max-w-lg rounded-[2rem] border p-5 shadow-[0_20px_60px_rgba(79,91,42,0.18)] backdrop-blur-2xl transition-all duration-300 ease-out lg:hidden ${
+            isOpen
+              ? "pointer-events-auto translate-y-0 opacity-100"
+              : "pointer-events-none -translate-y-4 opacity-0"
+          }`}
+          style={{
+            backgroundColor: `${COLOUR_PALETTE.cream}F5`, // 96% frosted glass cream
+            borderColor: `${COLOUR_PALETTE.secondary}90`,
+          }}
+        >
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center justify-between px-3 pb-1 text-[11px] font-bold tracking-widest text-[#B8892D] uppercase">
+              <span>Navigation Menu</span>
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#B8892D]" />
             </div>
+
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
               const isActive =
@@ -235,8 +247,8 @@ export default function Navbar() {
                   key={item.label}
                   href={item.href}
                   onClick={closeMenu}
-                  className={`flex items-center justify-between rounded-xl p-3.5 transition-all duration-200 ${
-                    isActive ? "shadow-xs" : "hover:bg-[#4F5B2A]/5"
+                  className={`flex items-center justify-between rounded-2xl p-3 transition-all duration-200 ${
+                    isActive ? "shadow-xs" : "hover:bg-black/5"
                   }`}
                   style={{
                     backgroundColor: isActive
@@ -244,7 +256,7 @@ export default function Navbar() {
                       : "transparent",
                   }}
                 >
-                  <div className="flex items-center gap-3.5">
+                  <div className="flex items-center gap-3">
                     <div
                       className="flex h-10 w-10 items-center justify-center rounded-xl border transition-colors"
                       style={{
@@ -263,7 +275,7 @@ export default function Navbar() {
                     </div>
                     <div>
                       <div
-                        className="text-base leading-tight font-bold"
+                        className="text-sm font-bold"
                         style={{
                           color: isActive
                             ? COLOUR_PALETTE.accent
@@ -274,7 +286,7 @@ export default function Navbar() {
                       </div>
                       {item.description && (
                         <div
-                          className="mt-0.5 text-xs opacity-75"
+                          className="text-[11px] opacity-75"
                           style={{ color: COLOUR_PALETTE.primaryDark }}
                         >
                           {item.description}
@@ -283,41 +295,41 @@ export default function Navbar() {
                     </div>
                   </div>
                   <ChevronRight
-                    className={`h-5 w-5 transition-transform ${
+                    className={`h-4 w-4 transition-transform ${
                       isActive ? "text-[#B8892D]" : "text-[#4F5B2A]/40"
                     }`}
                   />
                 </Link>
               );
             })}
-          </div>
 
-          {/* Mobile Bottom Contact Actions */}
-          <div
-            className="space-y-3 border-t pt-5 pb-8"
-            style={{ borderColor: `${COLOUR_PALETTE.secondary}70` }}
-          >
-            <Link
-              href="/contact"
-              onClick={closeMenu}
-              className="flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-xs font-bold tracking-wider uppercase shadow-sm transition-all active:scale-98"
-              style={{
-                backgroundColor: COLOUR_PALETTE.primaryDark,
-                color: COLOUR_PALETTE.cream,
-              }}
+            {/* Mobile Contact Button in Island */}
+            <div
+              className="mt-2 flex flex-col gap-2 border-t pt-3"
+              style={{ borderColor: `${COLOUR_PALETTE.secondary}60` }}
             >
-              <span>Contact Us</span>
-              <ArrowRight className="h-4 w-4 text-[#B8892D]" />
-            </Link>
+              <Link
+                href="/contact"
+                onClick={closeMenu}
+                className="flex w-full items-center justify-center gap-2 rounded-full py-3 text-xs font-bold tracking-wider uppercase shadow-md transition-all active:scale-98"
+                style={{
+                  backgroundColor: COLOUR_PALETTE.primaryDark,
+                  color: COLOUR_PALETTE.cream,
+                }}
+              >
+                <span>Contact Us</span>
+                <ArrowRight className="h-3.5 w-3.5 text-[#B8892D]" />
+              </Link>
 
-            <a
-              href="tel:+18005550199"
-              className="flex items-center justify-center gap-2 py-2 text-xs font-semibold opacity-85 transition-opacity hover:opacity-100"
-              style={{ color: COLOUR_PALETTE.primaryDark }}
-            >
-              <Phone className="h-3.5 w-3.5 text-[#B8892D]" />
-              <span>Direct Support: +1 (800) 555-0199</span>
-            </a>
+              <a
+                href="tel:+18005550199"
+                className="flex items-center justify-center gap-2 py-1 text-[11px] font-semibold opacity-80 hover:opacity-100"
+                style={{ color: COLOUR_PALETTE.primaryDark }}
+              >
+                <Phone className="h-3 w-3 text-[#B8892D]" />
+                <span>Direct Support: +1 (800) 555-0199</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
