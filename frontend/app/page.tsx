@@ -3,6 +3,7 @@ import QuickServicesBar from "@/components/home/QuickServicesBar";
 import HomeAboutSection from "@/components/home/HomeAboutSection";
 import HomeProductsSection from "@/components/home/HomeProductsSection";
 import HomeServicesSection from "@/components/home/HomeServicesSection";
+import HomeQualitySection from "@/components/home/HomeQualitySection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <HomeAboutSection />
       <HomeProductsSection />
       <HomeServicesSection />
+      <HomeQualitySection />
     </div>
   );
 }

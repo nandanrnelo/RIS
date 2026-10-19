@@ -533,3 +533,90 @@ export const HOME_SERVICES_DATA: HomeServicesSectionData = {
   secondaryCtaText: "Explore Full Services Scope",
   secondaryCtaHref: "/services",
 };
+
+// ============================================================================
+// HOME QUALITY POLICY DATA
+// Unified home screen dataset for HomeQualitySection
+// ============================================================================
+
+export interface QualityPolicyPoint {
+  id: string;
+  number: string;
+  text: string;
+}
+
+export interface HomeQualitySectionData {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  image: {
+    src: string;
+    alt: string;
+    tag: string;
+    caption: string;
+  };
+  policyPoints: QualityPolicyPoint[];
+  ctaText: string;
+  ctaHref: string;
+  secondaryCtaText: string;
+  secondaryCtaHref: string;
+}
+
+export const HOME_QUALITY_DATA: HomeQualitySectionData = {
+  eyebrow: "Our Commitment",
+  title: "Quality Policy",
+  intro:
+    "It is absolutely essential to ensure that the goods produced are of the right quality to ensure trouble-free operation at site. It is also essential that the inputs used meet stringent quality requirements, which is a prerequisite for meeting the finished product specifications. To fulfill this important requirement, Reflex Industrial Solutions has a well laid out process :",
+  image: {
+    src: "/images/quality/quality-lab.jpg",
+    alt: "Reflex Industrial Solutions analytical laboratory technicians conducting chemical quality control testing",
+    tag: "ISO 9001:2015 Accredited Lab",
+    caption: "Accredited Laboratory Testing & Quality Assurance",
+  },
+  policyPoints: [
+    {
+      id: "qp-1",
+      number: "01",
+      text: "Goods not meeting our specification are rejected and not used.",
+    },
+    {
+      id: "qp-2",
+      number: "02",
+      text: "Raw materials that have minor deviations are used only with the proper approvals.",
+    },
+    {
+      id: "qp-3",
+      number: "03",
+      text: "Production manufactures the products strictly as per the procedure laid down in the Production Manual.",
+    },
+    {
+      id: "qp-4",
+      number: "04",
+      text: "Finished product is analyzed in totality as per the specifications laid down in the Finished Products manual.",
+    },
+    {
+      id: "qp-5",
+      number: "05",
+      text: "Only products that meet the specifications in all respects are cleared for further dispatch.",
+    },
+    {
+      id: "qp-6",
+      number: "06",
+      text: "A sample from every batch that has been cleared for dispatch is retained for future reference and complaints, if any.",
+    },
+    {
+      id: "qp-7",
+      number: "07",
+      text: "Random sampling of packed batches and their analysis are conducted periodically.",
+    },
+    {
+      id: "qp-8",
+      number: "08",
+      text: "Every consignment is accompanied with a Certificate of Quality.",
+    },
+  ],
+  ctaText: "Review Quality Protocols",
+  ctaHref: "/quality",
+  secondaryCtaText: "Request Certificate of Quality",
+  secondaryCtaHref: "/contact",
+};
