@@ -15,20 +15,20 @@ import {
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { HOME_ABOUT_DATA, BusinessAreaCard } from "@/data/heroBannerData";
 
-function getBusinessAreaIcon(type: BusinessAreaCard["iconType"]) {
-  switch (type) {
-    case "pre-treatment":
-      return <Droplets className="h-5 w-5" />;
-    case "boiler":
-      return <Activity className="h-5 w-5" />;
-    case "fuel":
-      return <Flame className="h-5 w-5" />;
-    case "cooling":
-      return <ShieldCheck className="h-5 w-5" />;
-    default:
-      return <CheckCircle2 className="h-5 w-5" />;
-  }
-}
+// function getBusinessAreaIcon(type: BusinessAreaCard["iconType"]) {
+//   switch (type) {
+//     case "pre-treatment":
+//       return <Droplets className="h-5 w-5" />;
+//     case "boiler":
+//       return <Activity className="h-5 w-5" />;
+//     case "fuel":
+//       return <Flame className="h-5 w-5" />;
+//     case "cooling":
+//       return <ShieldCheck className="h-5 w-5" />;
+//     default:
+//       return <CheckCircle2 className="h-5 w-5" />;
+//   }
+// }
 
 export default function HomeAboutSection() {
   return (
