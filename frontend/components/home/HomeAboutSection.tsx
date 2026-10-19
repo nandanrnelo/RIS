@@ -142,52 +142,6 @@ export default function HomeAboutSection() {
               {HOME_ABOUT_DATA.description}
             </p>
 
-            {/* Business Areas Section Header */}
-            <div className="mt-8 flex items-center justify-between border-b border-stone-300/60 pb-3">
-              <div>
-                <h3
-                  className="text-base font-bold tracking-tight sm:text-lg"
-                  style={{ color: COLOUR_PALETTE.primaryDark }}
-                >
-                  {HOME_ABOUT_DATA.businessAreaHeading}
-                </h3>
-                <p className="mt-0.5 text-xs text-stone-600 sm:text-sm">
-                  {HOME_ABOUT_DATA.businessAreaSubheading}
-                </p>
-              </div>
-            </div>
-
-            {/* 2x2 Bento Feature Pods */}
-            <div className="mt-5 grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-              {HOME_ABOUT_DATA.businessAreas.map((area) => (
-                <div
-                  key={area.id}
-                  className="group relative flex items-start gap-3.5 rounded-2xl border border-stone-200/80 bg-white/70 p-3.5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-stone-300 hover:bg-white hover:shadow-md"
-                >
-                  {/* Icon badge */}
-                  <div
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-105"
-                    style={{
-                      backgroundColor: `${COLOUR_PALETTE.secondary}50`,
-                      color: COLOUR_PALETTE.primaryDark,
-                    }}
-                  >
-                    {getBusinessAreaIcon(area.iconType)}
-                  </div>
-
-                  {/* Text Details */}
-                  <div className="flex flex-col">
-                    <span className="text-sm font-bold text-stone-900 transition-colors duration-200 group-hover:text-amber-900">
-                      {area.title}
-                    </span>
-                    <span className="mt-0.5 line-clamp-1 text-xs text-stone-600">
-                      {area.subtitle}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
             {/* Actions: Primary Read More & Secondary CTA */}
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Link
@@ -206,13 +160,6 @@ export default function HomeAboutSection() {
                 >
                   <ArrowRight className="h-4 w-4" />
                 </span>
-              </Link>
-
-              <Link
-                href={HOME_ABOUT_DATA.secondaryCtaHref}
-                className="inline-flex items-center gap-2 rounded-full border border-stone-300 bg-white/60 px-6 py-3.5 text-sm font-medium text-stone-800 transition-all duration-300 hover:border-stone-400 hover:bg-white active:scale-95 sm:text-base"
-              >
-                <span>{HOME_ABOUT_DATA.secondaryCtaText}</span>
               </Link>
             </div>
           </div>

@@ -43,12 +43,13 @@ Below is the verified, up-to-date workspace directory tree:
 │   │   └── home/                           # Home screen modular sections
 │   │       ├── HeroBannerCarousel.tsx      # Split hero carousel (Left: content, Right: temporary banner visual)
 │   │       ├── HomeAboutSection.tsx        # Elevated company overview & core business areas with layered visual composition
+│   │       ├── HomeProductsSection.tsx     # 8-product bento grid & cinematic industrial facility hero showcase
 │   │       └── QuickServicesBar.tsx        # Floating curved services bar with 4 core industrial offerings & mouse indicator
 │   ├── constants/                          # Shared constants & design tokens
 │   │   └── colour.tsx                      # Brand palette color constants (cream, primaryDark, accent, secondary)
 │   ├── data/                               # Application datasets and navigation configuration
 │   │   ├── footerData.ts                   # Structured configuration for footer content, links & contacts
-│   │   ├── heroBannerData.ts               # Master dataset for all home screen modules (Hero slides, Quick Services, Home About)
+│   │   ├── heroBannerData.ts               # Master dataset for all home screen modules (Hero slides, Quick Services, Home About, Products)
 │   │   ├── navbarData.ts                   # Navigation menu items configuration and interface
 │   │   └── socialMediaData.ts              # Social media profile links, platforms, and metadata
 │   ├── public/                             # Public static assets (images, icons, SVGs)
@@ -57,12 +58,14 @@ Below is the verified, up-to-date workspace directory tree:
 │   │       │   ├── water-treatment-engineers.jpg # Authentic industrial water plant with chemical engineers inspecting quality
 │   │       │   ├── shape-6.png             # Decorative dot matrix cluster (top left)
 │   │       │   └── shape-15.png            # Decorative dot matrix cluster (center partition)
-│   │       └── hero/                       # Authentic extracted hero banner imagery
-│   │           ├── banner-1.jpg            # Authentic banner 1 (mountain lake mirror reflection)
-│   │           ├── banner-2.jpg            # Authentic banner 2 (aquatic tree biosphere with fish)
-│   │           ├── cta-bg.jpg              # Authentic eco-friendly visual (planet Earth in crystal water droplet)
-│   │           ├── about-2.jpg             # Environmental green tree sprouting from water droplet
-│   │           └── service-1.jpg           # Technical engineer water inspection at industrial plant
+│   │       ├── hero/                       # Authentic extracted hero banner imagery
+│   │       │   ├── banner-1.jpg            # Authentic banner 1 (mountain lake mirror reflection)
+│   │       │   ├── banner-2.jpg            # Authentic banner 2 (aquatic tree biosphere with fish)
+│   │       │   ├── cta-bg.jpg              # Authentic eco-friendly visual (planet Earth in crystal water droplet)
+│   │       │   ├── about-2.jpg             # Environmental green tree sprouting from water droplet
+│   │       │   └── service-1.jpg           # Technical engineer water inspection at industrial plant
+│   │       └── products/                   # Products section authentic industrial photography
+│   │           └── products-hero.jpg       # Modern automated reverse osmosis membrane facility & dosing skids
 │   ├── types/                              # Shared custom TypeScript definitions & interfaces
 │   ├── .gitignore                          # Git ignore list for frontend dependencies & build outputs
 │   ├── .prettierignore                     # Files excluded from Prettier formatting
@@ -89,7 +92,7 @@ The web application uses the **Next.js 16 App Router**. All routes reside within
 
 | URL Path | File Location | Route Type | Description & Purpose |
 | :--- | :--- | :--- | :--- |
-| `/` | `frontend/app/page.tsx` | Server/Client Page | Default root landing page featuring split Hero banner carousel, overlapping curved QuickServicesBar with 4 core industrial water & chemical management offerings (Audits, Pretreatment, Support/Maintenance, Waste Management), and HomeAboutSection showcasing Reflex Industrial Solutions overview, 4 core business area feature cards, direct contact hotline, and layered visual collage. |
+| `/` | `frontend/app/page.tsx` | Server/Client Page | Default root landing page featuring split Hero banner carousel, overlapping curved QuickServicesBar with 4 core industrial water & chemical management offerings (Audits, Pretreatment, Support/Maintenance, Waste Management), HomeAboutSection company overview, and HomeProductsSection showcasing the 8 core industrial product categories in an interactive bento grid with cinematic RO facility imagery. |
 | *(Layout)* | `frontend/app/layout.tsx` | Root Layout | Global shell wrapping all routes; injects Geist Sans/Mono fonts and `globals.css`. |
 
 ### Route Creation Conventions
@@ -145,19 +148,28 @@ Detailed description of core project files and their operational purpose:
   - Sets global `body` typography to use `var(--font-poppins), sans-serif;`.
 - **[app/page.tsx]**:
   - Main landing view component for route `/`.
-  - Seamlessly renders the split `<HeroBannerCarousel />` followed by the floating `<QuickServicesBar />` core services showcase and `<HomeAboutSection />`.
+  - Seamlessly renders the split `<HeroBannerCarousel />` followed by the floating `<QuickServicesBar />` core services showcase, `<HomeAboutSection />`, and `<HomeProductsSection />`.
 - **[components/home/HomeAboutSection.tsx]**:
   - Client component implementing an elevated, agency-grade company overview and core business area capabilities showcase for **Reflex Industrial Solutions**.
   - Brand Palette Architecture: Rendered strictly with `COLOUR_PALETTE` (`cream: #F5EFE3`, `primaryDark: #4F5B2A`, `accent: #B8892D`, `secondary: #D8C9A8`), maintaining zero color boundary or seam with the preceding sections.
   - Left Column (`lg:col-span-6 xl:col-span-6`): Features a modern pill tag with active gold beacon, stately Poppins headline with curved accent underline, fluid editorial paragraph detailing industrial chemistry programs across heavy industries, an interactive 2x2 bento grid of core business area capability pods (Pre Treatment Chemicals, Boiler Water Treatment, Fuel & Fire Side Treatment, Cooling Water Treatment) with bespoke vector insignia and hover micro-elevations, and a primary pill CTA button with trailing circular arrow badge alongside a secondary product exploration link.
   - Right Column (`lg:col-span-6 xl:col-span-6`): Single cohesive, high-impact architectural frame (`rounded-[2.5rem]`, double-bezel white glass casing) housing an authentic photograph of chemical engineers inspecting industrial water treatment facility operations (`water-treatment-engineers.jpg`). Features integrated, non-overlapping live telemetry status tags (top-left live "24/7 Field Operations Active" pulsing emerald pill, top-right "ISO 9001:2015 Certified" badge) and an integrated bottom frosted glass telemetry bar hosting the direct technical hotline (`044 42805983`) and process reliability metric (`100% Zero Harm Standard`).
+- **[components/home/HomeProductsSection.tsx]**:
+  - Client component implementing a modern, luxury industrial product showcase replacing dated reference templates.
+  - Symmetrical & Balanced Typography: Refined section header featuring an architectural eyebrow framed by symmetrical gold horizontal accent rules (`COLOUR_PALETTE.accent`), a stately two-line headline hierarchy (`High-Performance Chemical Formulations` in charcoal `#1A2010` and `& Industrial Treatment Systems` in olive `COLOUR_PALETTE.primaryDark`), and a centered, comfortably balanced description paragraph. Completely eliminates awkward 3-line word wraps, hanging ampersands, and misaligned SVG underlines.
+  - Features an architectural cinematic hero banner (`products-hero.jpg`) displaying automated multi-stage reverse osmosis membrane arrays and dosing skids with integrated telemetry pills.
+  - Displays the 8 core industrial product categories in an interactive 4-column bento grid (Boiler Water Treatment, Fuel & Fireside Treatment, Cooling Water Treatment, Raw & Wastewater Treatment, Reverse Osmosis / UF / Nano, Speciality Products, Plants & Monitoring Equipment, Boiler Feed Water Treatment). Each card hosts custom brand iconography, step numbering, category taglines, concise industrial capability descriptions, and hover arrow transitions.
+  - Centralized action hub linking to `/products` catalog and `/contact` for technical data sheets.
 - **[data/heroBannerData.ts]**:
   - Authoritative master dataset configuring all modular content for the home screen:
     - **Hero Slides (`HERO_SLIDES`, `HeroSlide`)**: 3 rotating carousel slides with typewriter headlines, background banners, and stats.
     - **Core Services (`QUICK_SERVICES_DATA`, `QuickServiceItem`)**: 4 industrial offerings (Audits, Pretreatment, Support, Chemical Waste) for the curved Serpentine stream.
     - **Company Overview (`HOME_ABOUT_DATA`, `HomeAboutData`, `BusinessAreaCard`)**: Reflex Industrial Solutions overview, 2x2 bento business area capability pods, live operations telemetry tags, and direct technical hotline.
+    - **Products Portfolio (`HOME_PRODUCTS_DATA`, `HomeProductsSectionData`, `ProductItem`)**: 8 core industrial product categories, cinematic hero image metadata, category taglines, call-to-action routing, and balanced two-line headline fields (`eyebrow`, `titleLine1`, `titleLine2`).
 - **[public/images/about/]**:
   - Directory hosting assets for the about section: `water-treatment-engineers.jpg` (authentic high-impact industrial water treatment and chemical dosing facility with on-site engineers), `shape-6.png` (top-left dot matrix cluster), and `shape-15.png` (center partition dot matrix cluster).
+- **[public/images/products/]**:
+  - Directory hosting assets for the products section: `products-hero.jpg` (modern automated reverse osmosis membrane facility and chemical dosing skids).
 - **[components/home/QuickServicesBar.tsx]**:
   - Client component implementing a dynamic, non-rectangular **Serpentine Hydro-Wave Stream** layout with scroll-driven parallax movement and staggered entrance animations.
   - Seamless Transition: Seamlessly connects directly to the hero section with zero color boundary or dead gap, sharing the same solid `COLOUR_PALETTE.cream` (`#F5EFE3`) background with tight top padding (`pt-2 sm:pt-4`).
@@ -240,6 +252,8 @@ graph TD
 
 | Date (YYYY-MM-DD) | Summary of Changes | Files Touched / Created | Next Steps / Notes |
 | :--- | :--- | :--- | :--- |
+| 2026-10-19 | Resolved formatting and alignment defects in `HomeProductsSection.tsx` header per user feedback: eliminated the awkward 3-line headline wrap, hanging ampersand, and misaligned SVG underline. Replaced the generic breadcrumb-style pill with an architectural eyebrow flanked symmetrically by gold accent rules (`COLOUR_PALETTE.accent`), and structured the headline into two perfectly balanced, stately lines (`High-Performance Chemical Formulations` in charcoal `#1A2010` and `& Industrial Treatment Systems` in olive `#4F5B2A`). Calibrated the description paragraph to a comfortable `max-w-2xl` center alignment, normalized section top padding (`pt-8 sm:pt-12 lg:pt-14`), and updated `frontend/data/heroBannerData.ts` with typed fields `eyebrow`, `titleLine1`, and `titleLine2`. | `frontend/components/home/HomeProductsSection.tsx`<br>`frontend/data/heroBannerData.ts`<br>`PROJECT_DOCUMENTATION.md` | Products section header is now impeccably balanced, symmetrical, and aligned. |
+| 2026-10-19 | Implemented the Home Screen Products showcase (`HomeProductsSection.tsx`) with a completely redesigned, luxury industrial architecture replacing the dated demo template. Generated and linked authentic high-resolution industrial photography of automated reverse osmosis membrane arrays and dosing skids (`products-hero.jpg`). Designed an interactive 4-column bento grid showcasing the 8 core industrial product categories (Boiler Water Treatment, Fuel & Fireside, Cooling Water, Raw & Wastewater, RO / UF / Nano, Speciality Products, Plants & Monitoring Equipment, Boiler Feed Water) with bespoke iconography, category step numbering, and hover micro-elevations. Integrated all product copy and routing directly into the master dataset `frontend/data/heroBannerData.ts` and mounted into `frontend/app/page.tsx` on the uniform cream canvas. | `frontend/data/heroBannerData.ts`<br>`frontend/components/home/HomeProductsSection.tsx`<br>`frontend/app/page.tsx`<br>`frontend/public/images/products/products-hero.jpg`<br>`PROJECT_DOCUMENTATION.md` | Products showcase active with 8 industrial offerings; zero separate data files created. |
 | 2026-10-19 | Consolidated all home screen data into the single master file `frontend/data/heroBannerData.ts` and deleted redundant file `frontend/data/homeAboutData.ts` per user request. Enhanced `heroBannerData.ts` to export `HOME_ABOUT_DATA`, `BusinessAreaCard`, and `HomeAboutData` alongside `HERO_SLIDES` and `QUICK_SERVICES_DATA`, unifying all three home screen sections under one source of truth. Updated `HomeAboutSection.tsx` import paths to point directly to `@/data/heroBannerData`. | `frontend/data/heroBannerData.ts`<br>`frontend/data/homeAboutData.ts` *(deleted)*<br>`frontend/components/home/HomeAboutSection.tsx`<br>`PROJECT_DOCUMENTATION.md` | Single unified dataset architecture preserved across all home components. |
 | 2026-10-19 | Eliminated excessive vertical space and void gap between `QuickServicesBar.tsx` and `HomeAboutSection.tsx` per user feedback. Reduced `HomeAboutSection.tsx` top padding from `py-18 sm:py-24 lg:py-32` down to `pt-4 sm:pt-6 lg:pt-8 pb-16 sm:pb-20 lg:pb-24` and tightened `QuickServicesBar.tsx` bottom padding from `pb-16 sm:pb-20 lg:pb-24` down to `pb-4 sm:pb-6 lg:pb-8`, collapsing the gap from over 224px to a snug, natural transition that seamlessly flows directly from the curved service pods into the company overview. | `frontend/components/home/HomeAboutSection.tsx`<br>`frontend/components/home/QuickServicesBar.tsx`<br>`PROJECT_DOCUMENTATION.md` | Vertical gap between services pods and about section is now compact, balanced, and gap-free. |
 | 2026-10-19 | Redesigned the visual imagery and presentation UI in `HomeAboutSection.tsx` per user feedback: eliminated messy overlapping boxes, floating cards, and conceptual tree droplet imagery. Replaced them with an authentic, high-impact industrial photograph of chemical engineers actively monitoring chemical dosing and water quality filtration (`water-treatment-engineers.jpg`). Implemented a unified, double-bezel modern architectural frame (`rounded-[2.5rem]`, subtle specular glass highlight sheen) with integrated live telemetry tags (top-left "24/7 Field Operations Active" pulsing emerald pill, top-right "ISO 9001:2015 Certified" badge) and an integrated bottom frosted glass telemetry bar hosting the direct technical hotline (`044 42805983`) and process reliability metric (`100% Zero Harm Standard`). Synced dataset `frontend/data/homeAboutData.ts`. | `frontend/data/homeAboutData.ts`<br>`frontend/components/home/HomeAboutSection.tsx`<br>`frontend/public/images/about/water-treatment-engineers.jpg`<br>`PROJECT_DOCUMENTATION.md` | Single cohesive architectural frame with clean telemetry verified; zero messy overlapping boxes. |

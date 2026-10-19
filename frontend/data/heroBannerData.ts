@@ -252,3 +252,163 @@ export const HOME_ABOUT_DATA: HomeAboutData = {
   },
   palette: COLOUR_PALETTE,
 };
+
+// ============================================================================
+// HOME PRODUCTS SECTION DATA
+// Unified home screen dataset for HomeProductsSection
+// ============================================================================
+
+export interface ProductItem {
+  id: string;
+  stepNumber: string;
+  title: string;
+  tagline: string;
+  description: string;
+  href: string;
+  iconType:
+    | "boiler-water"
+    | "fuel-fireside"
+    | "cooling-water"
+    | "raw-waste"
+    | "ro-membrane"
+    | "speciality"
+    | "equipment"
+    | "boiler-feed";
+  popularBadge?: string;
+}
+
+export interface HomeProductsSectionData {
+  eyebrow: string;
+  titleLine1: string;
+  titleLine2: string;
+  eyebrowBadge?: {
+    tag: string;
+    label: string;
+  };
+  titlePrefix?: string;
+  titleHighlight?: string;
+  titleSuffix?: string;
+  description: string;
+  image: {
+    src: string;
+    alt: string;
+    tag: string;
+    caption: string;
+  };
+  products: ProductItem[];
+  ctaText: string;
+  ctaHref: string;
+  secondaryCtaText: string;
+  secondaryCtaHref: string;
+}
+
+export const HOME_PRODUCTS_DATA: HomeProductsSectionData = {
+  eyebrow: "Our Products",
+  titleLine1: "High-Performance Chemical Formulations",
+  titleLine2: "& Industrial Treatment Systems",
+  eyebrowBadge: {
+    tag: "Our Products",
+    label: "Reflex Industrial Solutions",
+  },
+  titlePrefix: "High-Performance",
+  titleHighlight: "Chemical Formulations",
+  titleSuffix: "& Treatment Systems",
+  description:
+    "Engineered specifically for heavy industrial utilities, our high-purity chemical blends and automated monitoring technologies protect vital assets, maximize thermal efficiency, and guarantee environmental compliance.",
+  image: {
+    src: "/images/products/products-hero.jpg",
+    alt: "State-of-the-art industrial reverse osmosis membrane arrays and automated chemical dosing skids in a modern chemical engineering facility",
+    tag: "Active Industrial Installation",
+    caption: "Automated Multi-Stage Membrane & Dosing Systems",
+  },
+  products: [
+    {
+      id: "boiler-water-treatment",
+      stepNumber: "01",
+      title: "Boiler Water Treatment",
+      tagline: "Corrosion & Scale Inhibition",
+      description:
+        "High-performance oxygen scavengers, polymer conditioners, and alkalinity builders formulated for low to ultra-high pressure steam boilers.",
+      href: "/products#boiler-water",
+      iconType: "boiler-water",
+      popularBadge: "Core Line",
+    },
+    {
+      id: "fuel-fireside-treatment",
+      stepNumber: "02",
+      title: "Fuel & Fireside Treatment",
+      tagline: "Combustion Optimization",
+      description:
+        "Solid fuel additives and furnace oil conditioning catalysts that elevate thermal heat transfer while mitigating slagging and acid dew point corrosion.",
+      href: "/products#fuel-treatment",
+      iconType: "fuel-fireside",
+    },
+    {
+      id: "cooling-water-treatment",
+      stepNumber: "03",
+      title: "Cooling Water Treatment",
+      tagline: "Heat Exchanger Defense",
+      description:
+        "Broad-spectrum oxidizing & non-oxidizing biocides, biodispersants, and organic corrosion inhibitors for open recirculating and closed loops.",
+      href: "/products#cooling-water",
+      iconType: "cooling-water",
+      popularBadge: "Eco-Safe",
+    },
+    {
+      id: "raw-waste-water-treatment",
+      stepNumber: "04",
+      title: "Raw & Wastewater Treatment",
+      tagline: "Zero Discharge Clarification",
+      description:
+        "Specialized coagulants, polyamines, heavy metal precipitants, and high-molecular flocculants engineered for zero liquid discharge (ZLD).",
+      href: "/products#wastewater",
+      iconType: "raw-waste",
+    },
+    {
+      id: "ro-membrane-treatment",
+      stepNumber: "05",
+      title: "Reverse Osmosis / UF / Nano",
+      tagline: "Membrane Life Extension",
+      description:
+        "NSF-certified membrane antiscalants, precision silica dispersants, and CIP chemical cleaners that restore flux and extend membrane longevity.",
+      href: "/products#membrane-treatment",
+      iconType: "ro-membrane",
+      popularBadge: "High Demand",
+    },
+    {
+      id: "speciality-products",
+      stepNumber: "06",
+      title: "Speciality Products",
+      tagline: "Tailored Process Chemistries",
+      description:
+        "Custom specialty formulations for sugar processing, refineries, paint booths, metal finishing, and customized industrial descaling.",
+      href: "/products#speciality",
+      iconType: "speciality",
+    },
+    {
+      id: "plants-monitoring-equipment",
+      stepNumber: "07",
+      title: "Plants & Monitoring Equipment",
+      tagline: "Telemetry & Automated Skids",
+      description:
+        "Smart automated chemical dosing skids, inline pH/ORP controllers, conductivity monitors, and digital real-time water quality telemetry.",
+      href: "/products#equipment",
+      iconType: "equipment",
+      popularBadge: "Smart Tech",
+    },
+    {
+      id: "boiler-feed-water",
+      stepNumber: "08",
+      title: "Boiler Feed Water Treatment",
+      tagline: "Demineralization & Polishing",
+      description:
+        "Ion exchange resin regeneration chemicals, condensate return line neutralizing amines, and feed-water de-aerator protective chemistries.",
+      href: "/products#boiler-feed",
+      iconType: "boiler-feed",
+    },
+  ],
+  ctaText: "Explore Full Catalog",
+  ctaHref: "/products",
+  secondaryCtaText: "Request Technical TDS / SDS",
+  secondaryCtaHref: "/contact",
+};
