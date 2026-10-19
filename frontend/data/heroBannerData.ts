@@ -412,3 +412,124 @@ export const HOME_PRODUCTS_DATA: HomeProductsSectionData = {
   secondaryCtaText: "Request Technical TDS / SDS",
   secondaryCtaHref: "/contact",
 };
+
+// ============================================================================
+// HOME INDUSTRIAL SERVICES DATA
+// Unified home screen dataset for HomeServicesSection
+// ============================================================================
+
+export interface IndustrialServiceItem {
+  id: string;
+  stepNumber: string;
+  title: string;
+  scope: string;
+  href: string;
+}
+
+export interface HomeServicesSectionData {
+  eyebrow: string;
+  titleLine1: string;
+  titleLine2: string;
+  description: string;
+  image: {
+    src: string;
+    alt: string;
+    tag: string;
+    caption: string;
+    phoneLabel: string;
+    phone: string;
+    phoneHref: string;
+  };
+  services: IndustrialServiceItem[];
+  ctaText: string;
+  ctaHref: string;
+  secondaryCtaText: string;
+  secondaryCtaHref: string;
+}
+
+export const HOME_SERVICES_DATA: HomeServicesSectionData = {
+  eyebrow: "Our Services",
+  titleLine1: "Industrial Engineering Services",
+  titleLine2: "& Utility Management Solutions",
+  description:
+    "From comprehensive thermodynamic water and energy audits to turnkey plant commissioning, critical spares supply, and continuous certified laboratory scale analysis.",
+  image: {
+    src: "/images/hero/service-1.jpg",
+    alt: "Reflex Industrial Solutions technical field engineer in protective gear conducting water quality monitoring and basin inspection at an industrial facility",
+    tag: "Active Field Engineering",
+    caption: "On-Site Technical Diagnostics & Water Auditing",
+    phoneLabel: "Speak with a Senior Water Engineer",
+    phone: CONTACT_DETAILS.phone,
+    phoneHref: `tel:${CONTACT_DETAILS.phone.replace(/\s+/g, "")}`,
+  },
+  services: [
+    {
+      id: "water-energy-audits",
+      stepNumber: "01",
+      title: "Water and Energy Audits",
+      scope:
+        "Comprehensive thermodynamic utility surveys and mass-balance auditing",
+      href: "/services#audits",
+    },
+    {
+      id: "system-survey",
+      stepNumber: "02",
+      title: "System Survey & Technical Diagnostics",
+      scope:
+        "On-site hydraulic and mechanical inspection across industrial piping loops",
+      href: "/services#survey",
+    },
+    {
+      id: "pretreatment-systems",
+      stepNumber: "03",
+      title: "Supply of Pretreatment Systems",
+      scope:
+        "Multimedia filters, softeners, demineralisers (DM), clarifiers, and RO systems",
+      href: "/services#pretreatment-systems",
+    },
+    {
+      id: "erection-commissioning",
+      stepNumber: "04",
+      title: "Erection, Commissioning, Operation & Maintenance (O&M)",
+      scope:
+        "Turnkey mechanical installation, trial testing, and ongoing plant operations",
+      href: "/services#commissioning",
+    },
+    {
+      id: "amc-contracts",
+      stepNumber: "05",
+      title: "Annual Maintenance Contracts (AMC)",
+      scope:
+        "365-day preventive servicing schedules, chemical tuning, and emergency response",
+      href: "/services#amc",
+    },
+    {
+      id: "spares-supply",
+      stepNumber: "06",
+      title: "Supply of Critical Spares & Consumables",
+      scope:
+        "Genuine RO membranes, ion-exchange resin, precision pumps, and valves",
+      href: "/services#spares",
+    },
+    {
+      id: "technical-support",
+      stepNumber: "07",
+      title: "Regular Technical Support & Field Services",
+      scope:
+        "Scheduled chemical engineer visits, dosage calibration, and site reviews",
+      href: "/services#support",
+    },
+    {
+      id: "water-scale-analysis",
+      stepNumber: "08",
+      title: "Water and Scale Laboratory Analysis",
+      scope:
+        "Certified wet-chemistry testing, metallurgy, scale indexing, and deposit assays",
+      href: "/services#analysis",
+    },
+  ],
+  ctaText: "Schedule a Plant Audit",
+  ctaHref: "/contact",
+  secondaryCtaText: "Explore Full Services Scope",
+  secondaryCtaHref: "/services",
+};
