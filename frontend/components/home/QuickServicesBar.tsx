@@ -465,7 +465,7 @@ export default function QuickServicesBar() {
       ref={sectionRef}
       id="capabilities-stream"
       aria-label="Core Industrial Capabilities Stream"
-      className="relative w-full overflow-hidden pt-2 pb-16 transition-colors sm:pt-4 sm:pb-20 lg:pb-24"
+      className="relative w-full overflow-hidden pt-2 pb-8 transition-colors sm:pt-4 sm:pb-6 lg:pb-8"
       style={{ backgroundColor: COLOUR_PALETTE.cream }}
     >
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">

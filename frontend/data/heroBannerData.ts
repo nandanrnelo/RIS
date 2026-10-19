@@ -1,4 +1,5 @@
 import { COLOUR_PALETTE } from "@/constants/colour";
+import { CONTACT_DETAILS } from "@/data/socialMediaData";
 
 export interface HeroSlide {
   id: number;
@@ -138,3 +139,116 @@ export const QUICK_SERVICES_DATA: QuickServiceItem[] = [
     primaryColor: COLOUR_PALETTE.primaryDark,
   },
 ];
+
+// ============================================================================
+// HOME ABOUT & CORE CAPABILITIES DATA
+// Unified home screen dataset for HomeAboutSection
+// ============================================================================
+
+export interface BusinessAreaCard {
+  id: string;
+  title: string;
+  subtitle: string;
+  iconType: "pre-treatment" | "boiler" | "fuel" | "cooling";
+}
+
+export interface HomeAboutData {
+  eyebrowBadge: {
+    tag: string;
+    label: string;
+  };
+  companyName: string;
+  headlinePrefix: string;
+  headlineHighlight: string;
+  description: string;
+  businessAreaHeading: string;
+  businessAreaSubheading: string;
+  businessAreas: BusinessAreaCard[];
+  ctaText: string;
+  ctaHref: string;
+  secondaryCtaText: string;
+  secondaryCtaHref: string;
+  telemetry: {
+    liveStatus: string;
+    certificationBadge: string;
+    hotlineLabel: string;
+    phone: string;
+    phoneHref: string;
+    metricValue: string;
+    metricLabel: string;
+  };
+  images: {
+    hero: {
+      src: string;
+      alt: string;
+      caption: string;
+    };
+    dotPatternTop: string;
+    dotPatternCenter: string;
+  };
+  palette: typeof COLOUR_PALETTE;
+}
+
+export const HOME_ABOUT_DATA: HomeAboutData = {
+  eyebrowBadge: {
+    tag: "Welcome To",
+    label: "Reflex Industrial Solutions",
+  },
+  companyName: "Reflex Industrial Solutions",
+  headlinePrefix: "Welcome To",
+  headlineHighlight: "Reflex Industrial Solutions",
+  description:
+    "We are Reflex Industrial Solutions. An elite water management and industrial chemical solutions agency that caters to water-related engineering challenges of all types and diversity. The company offers advanced water management solutions to the entire gamut of industries such as fertilizer, petroleum refining, petrochemicals, power generation, mining, and mineral processing.",
+  businessAreaHeading: "Our Core Business Areas for Water",
+  businessAreaSubheading:
+    "End-to-end industrial chemistry formulations engineered for maximum operational uptime and thermal efficiency.",
+  businessAreas: [
+    {
+      id: "pre-treatment",
+      title: "Pre Treatment Chemicals",
+      subtitle: "Clarifiers, coagulants & RO membrane protection",
+      iconType: "pre-treatment",
+    },
+    {
+      id: "boiler-water",
+      title: "Boiler Water Treatment",
+      subtitle: "High-pressure corrosion & scale control",
+      iconType: "boiler",
+    },
+    {
+      id: "fuel-fire-side",
+      title: "Fuel & Fire Side Treatment",
+      subtitle: "Combustion efficiency & slag minimization",
+      iconType: "fuel",
+    },
+    {
+      id: "cooling-water",
+      title: "Cooling Water Treatment",
+      subtitle: "Microbiological biocides & heat exchange defense",
+      iconType: "cooling",
+    },
+  ],
+  ctaText: "Read More",
+  ctaHref: "/about",
+  secondaryCtaText: "Explore Products",
+  secondaryCtaHref: "/products",
+  telemetry: {
+    liveStatus: "24/7 Field Operations Active",
+    certificationBadge: "ISO 9001:2015 Certified",
+    hotlineLabel: "Call Us Now",
+    phone: CONTACT_DETAILS.phone,
+    phoneHref: `tel:${CONTACT_DETAILS.phone.replace(/\s+/g, "")}`,
+    metricValue: "100%",
+    metricLabel: "Process Reliability",
+  },
+  images: {
+    hero: {
+      src: "/images/about/water-treatment-engineers.jpg",
+      alt: "Reflex Industrial Solutions chemical engineers conducting technical water quality analysis and dosing monitoring at an industrial water treatment plant",
+      caption: "High-Volume Chemical Dosing & Filtration Operations",
+    },
+    dotPatternTop: "/images/about/shape-6.png",
+    dotPatternCenter: "/images/about/shape-15.png",
+  },
+  palette: COLOUR_PALETTE,
+};
