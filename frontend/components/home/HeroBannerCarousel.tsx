@@ -169,10 +169,10 @@ export default function HeroBannerCarousel() {
             </div>
 
             {/* Description Paragraph with Fixed Minimum Height & Fluid Glide */}
-            <div className="mt-4 flex min-h-[5.5rem] items-start sm:min-h-[4.75rem]">
+            <div className="mt-3.5 flex min-h-[5rem] items-start sm:mt-4 sm:min-h-[4.75rem]">
               <p
                 key={`desc-${currentSlide.id}`}
-                className={`text-base leading-relaxed font-normal text-neutral-700 transition-all delay-100 duration-700 ease-out sm:text-lg ${
+                className={`text-sm leading-relaxed font-normal text-neutral-700 transition-all delay-100 duration-700 ease-out sm:text-base lg:text-lg ${
                   isAnimating
                     ? "translate-y-4 opacity-0"
                     : "translate-y-0 opacity-100"
@@ -185,7 +185,7 @@ export default function HeroBannerCarousel() {
             {/* CTA Action Buttons with Smooth Entrance */}
             <div
               key={`cta-${currentSlide.id}`}
-              className={`mt-8 flex flex-wrap items-center gap-4 transition-all delay-150 duration-700 ease-out ${
+              className={`mt-7 flex flex-row items-center gap-2.5 transition-all delay-150 duration-700 ease-out sm:mt-8 sm:gap-4 ${
                 isAnimating
                   ? "translate-y-2 opacity-80"
                   : "translate-y-0 opacity-100"
@@ -194,19 +194,19 @@ export default function HeroBannerCarousel() {
               {/* Primary "Read More" Button */}
               <Link
                 href={currentSlide.ctaHref}
-                className="group relative inline-flex items-center gap-3 rounded-full py-3.5 pr-4 pl-6 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-xl active:scale-[0.98] md:text-base"
+                className="group relative inline-flex flex-1 items-center justify-center gap-2 rounded-full py-2.5 pr-3 pl-4.5 text-xs font-semibold text-white shadow-md transition-all duration-300 hover:shadow-lg active:scale-[0.98] sm:flex-initial sm:gap-3 sm:py-3.5 sm:pr-4 sm:pl-6 sm:text-sm md:text-base"
                 style={{
                   backgroundColor: COLOUR_PALETTE.primaryDark,
                 }}
               >
-                <span>{currentSlide.ctaText}</span>
+                <span className="truncate">{currentSlide.ctaText}</span>
                 <span
-                  className="flex h-8 w-8 items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:translate-x-1"
+                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:translate-x-0.5 sm:h-8 sm:w-8"
                   style={{
                     backgroundColor: COLOUR_PALETTE.accent,
                   }}
                 >
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
                 </span>
               </Link>
 
@@ -214,59 +214,61 @@ export default function HeroBannerCarousel() {
               {currentSlide.secondaryCtaText && (
                 <Link
                   href={currentSlide.secondaryCtaHref || "#solutions"}
-                  className="inline-flex items-center gap-2 rounded-full border px-5 py-3.5 text-sm font-medium transition-all duration-300 hover:bg-black/5 active:scale-[0.98] md:text-base"
+                  className="inline-flex flex-1 items-center justify-center rounded-full border px-3.5 py-2.5 text-xs font-medium transition-all duration-300 hover:bg-black/5 active:scale-[0.98] sm:flex-initial sm:px-5 sm:py-3.5 sm:text-sm md:text-base"
                   style={{
                     borderColor: `${COLOUR_PALETTE.primaryDark}40`,
                     color: COLOUR_PALETTE.primaryDark,
                   }}
                 >
-                  <span>{currentSlide.secondaryCtaText}</span>
+                  <span className="truncate">
+                    {currentSlide.secondaryCtaText}
+                  </span>
                 </Link>
               )}
             </div>
 
             {/* Slider Controls, Progress Bar & Slide Thumbnails */}
-            <div className="mt-10 flex flex-col justify-between gap-4 border-t border-stone-300/60 pt-6 sm:flex-row sm:items-center">
-              {/* Previous / Next Arrow Controls & Pause Toggle */}
-              <div className="flex items-center gap-2">
+            <div className="mt-8 flex items-center justify-between gap-3 border-t border-stone-300/60 pt-5 sm:mt-10 sm:pt-6">
+              {/* Left: Previous / Next Arrow Controls & Pause Toggle */}
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <button
                   onClick={prevSlide}
                   aria-label="Previous banner slide"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-stone-300 bg-white/80 text-neutral-700 shadow-sm transition-all duration-200 hover:border-neutral-400 hover:bg-white active:scale-95"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-white/80 text-neutral-700 shadow-xs transition-all duration-200 hover:border-neutral-400 hover:bg-white active:scale-95 sm:h-10 sm:w-10"
                 >
-                  <ChevronLeft className="h-5 w-5" />
+                  <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
                 <button
                   onClick={nextSlide}
                   aria-label="Next banner slide"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-stone-300 bg-white/80 text-neutral-700 shadow-sm transition-all duration-200 hover:border-neutral-400 hover:bg-white active:scale-95"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 bg-white/80 text-neutral-700 shadow-xs transition-all duration-200 hover:border-neutral-400 hover:bg-white active:scale-95 sm:h-10 sm:w-10"
                 >
-                  <ChevronRight className="h-5 w-5" />
+                  <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
 
                 <button
                   onClick={() => setIsPaused(!isPaused)}
                   aria-label={isPaused ? "Play carousel" : "Pause carousel"}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-stone-200 bg-white/60 text-neutral-500 transition-all duration-200 hover:bg-white hover:text-neutral-800"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border border-stone-200 bg-white/60 text-neutral-500 transition-all duration-200 hover:bg-white hover:text-neutral-800 sm:h-9 sm:w-9"
                   title={isPaused ? "Resume auto-play" : "Pause auto-play"}
                 >
                   {isPaused ? (
-                    <Play className="h-3.5 w-3.5 fill-current" />
+                    <Play className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" />
                   ) : (
-                    <Pause className="h-3.5 w-3.5" />
+                    <Pause className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                   )}
                 </button>
               </div>
 
-              {/* Slide Interactive Badges & Progress Indicator */}
-              <div className="flex items-center gap-2">
+              {/* Right: Slide Interactive Badges & Progress Indicator */}
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 {HERO_SLIDES.map((slide, idx) => {
                   const isActive = idx === currentIdx;
                   return (
                     <button
                       key={slide.id}
                       onClick={() => goToSlide(idx)}
-                      className={`group relative flex h-8 items-center rounded-full px-3 text-xs font-medium transition-all duration-300 ${
+                      className={`group relative flex h-8 items-center overflow-hidden rounded-full px-2.5 text-xs font-medium transition-all duration-300 sm:px-3 ${
                         isActive
                           ? "text-white shadow-sm"
                           : "border border-stone-200 bg-white/70 text-neutral-600 hover:bg-white"
@@ -277,15 +279,15 @@ export default function HeroBannerCarousel() {
                           : undefined,
                       }}
                     >
-                      <span className="mr-1 font-mono">0{slide.id}</span>
-                      <span className="hidden font-sans sm:inline">
+                      <span className="font-mono">0{slide.id}</span>
+                      <span className="hidden font-sans sm:ml-1 sm:inline">
                         {slide.tagline.split(" ")[0]}
                       </span>
 
                       {/* Micro Progress Bar on Active Item */}
                       {isActive && (
                         <span
-                          className="absolute bottom-0 left-0 h-[2px] rounded-full transition-all duration-75"
+                          className="absolute inset-x-0 bottom-0 h-[2.5px] rounded-full transition-all duration-75"
                           style={{
                             width: `${progress}%`,
                             backgroundColor: COLOUR_PALETTE.accent,
