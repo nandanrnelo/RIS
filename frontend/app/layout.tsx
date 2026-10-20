@@ -29,7 +29,7 @@ export default function RootLayout({
       style={{ backgroundColor: "#F5EFE3" }}
     >
       <body
-        className="flex min-h-full flex-col font-sans"
+        className="flex min-h-full flex-col overflow-x-clip font-sans"
         style={{ backgroundColor: "#F5EFE3" }}
       >
         <Navbar />

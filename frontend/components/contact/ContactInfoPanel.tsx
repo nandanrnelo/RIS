@@ -207,12 +207,12 @@ export function ContactInfoPanel() {
                 style={{ color: COLOUR_PALETTE.primaryDark }}
               />
               <div className="space-y-0.5">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center justify-between gap-1.5 sm:gap-2">
                   <h4 className="text-xs font-bold text-stone-900">
                     {pillar.title}
                   </h4>
                   <span
-                    className="py-0.2 rounded px-1.5 text-[9px] font-bold tracking-wider uppercase"
+                    className="rounded px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase"
                     style={{
                       backgroundColor: `${COLOUR_PALETTE.accent}15`,
                       color: COLOUR_PALETTE.accent,

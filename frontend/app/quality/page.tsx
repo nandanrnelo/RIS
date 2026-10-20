@@ -23,7 +23,7 @@ export default function QualityPage() {
 
   return (
     <main
-      className="relative min-h-screen pt-28 pb-24 sm:pt-32 sm:pb-28 lg:pt-36 lg:pb-32"
+      className="relative min-h-screen overflow-x-clip pt-28 pb-24 sm:pt-32 sm:pb-28 lg:pt-36 lg:pb-32"
       style={{ backgroundColor: COLOUR_PALETTE.cream }}
     >
       {/* Ambient warm background glows */}

@@ -17,4 +17,5 @@ body {
   color: var(--foreground);
   font-family: var(--font-poppins), sans-serif;
   min-height: 100%;
+  overflow-x: clip;
 }
