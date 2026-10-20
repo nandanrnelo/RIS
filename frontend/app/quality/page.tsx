@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ChevronRight,
-  Home,
-  ShieldCheck,
-  Phone,
-  ArrowRight,
-  Award,
-} from "lucide-react";
+import { ChevronRight, Home } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { QUALITY_PAGE_DATA } from "@/data/qualityPageData";
 import { QualityInteractiveShowcase } from "@/components/quality/QualityInteractiveShowcase";

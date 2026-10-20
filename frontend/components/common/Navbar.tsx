@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronRight, ArrowRight, Phone } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { NAV_ITEMS } from "@/data/navbarData";
+import { CONTACT_DETAILS } from "@/data/socialMediaData";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -176,7 +177,11 @@ export default function Navbar() {
           {/* Contact Us Pill Button */}
           <Link
             href="/contact"
-            className="group hidden items-center gap-2 rounded-full py-2.5 pr-3.5 pl-5 text-xs font-bold tracking-wider uppercase shadow-md transition-all duration-300 hover:shadow-lg hover:brightness-105 active:scale-95 sm:inline-flex"
+            className={`group hidden items-center gap-2 rounded-full py-2.5 pr-3.5 pl-5 text-xs font-bold tracking-wider uppercase shadow-md transition-all duration-300 hover:shadow-lg hover:brightness-105 active:scale-95 sm:inline-flex ${
+              pathname === "/contact" || pathname.startsWith("/contact")
+                ? "ring-2 ring-[#B8892D] ring-offset-2 ring-offset-[#F5EFE3]"
+                : ""
+            }`}
             style={{
               backgroundColor: COLOUR_PALETTE.primaryDark,
               color: COLOUR_PALETTE.cream,
@@ -311,7 +316,11 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={closeMenu}
-                className="flex w-full items-center justify-center gap-2 rounded-full py-3 text-xs font-bold tracking-wider uppercase shadow-md transition-all active:scale-98"
+                className={`flex w-full items-center justify-center gap-2 rounded-full py-3 text-xs font-bold tracking-wider uppercase shadow-md transition-all active:scale-98 ${
+                  pathname === "/contact" || pathname.startsWith("/contact")
+                    ? "ring-2 ring-[#B8892D] ring-offset-2"
+                    : ""
+                }`}
                 style={{
                   backgroundColor: COLOUR_PALETTE.primaryDark,
                   color: COLOUR_PALETTE.cream,
@@ -322,12 +331,12 @@ export default function Navbar() {
               </Link>
 
               <a
-                href="tel:+18005550199"
+                href={`tel:${CONTACT_DETAILS.phone.replace(/\s+/g, "")}`}
                 className="flex items-center justify-center gap-2 py-1 text-[11px] font-semibold opacity-80 hover:opacity-100"
                 style={{ color: COLOUR_PALETTE.primaryDark }}
               >
                 <Phone className="h-3 w-3 text-[#B8892D]" />
-                <span>Direct Support: +1 (800) 555-0199</span>
+                <span>Technical Hotline: {CONTACT_DETAILS.phone}</span>
               </a>
             </div>
           </div>

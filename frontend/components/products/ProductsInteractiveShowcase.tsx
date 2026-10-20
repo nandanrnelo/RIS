@@ -16,10 +16,6 @@ import {
   Phone,
   ArrowRight,
   ShieldCheck,
-  FileText,
-  SlidersHorizontal,
-  ChevronRight,
-  Sparkles,
 } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import {

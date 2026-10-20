@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ChevronRight,
-  Home,
-  Package,
-  Phone,
-  ArrowRight,
-  ShieldCheck,
-} from "lucide-react";
+import { ChevronRight, Home } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { PRODUCTS_PAGE_DATA } from "@/data/productsPageData";
 import { ProductsInteractiveShowcase } from "@/components/products/ProductsInteractiveShowcase";

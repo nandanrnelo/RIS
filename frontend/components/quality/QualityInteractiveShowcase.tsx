@@ -7,22 +7,13 @@ import {
   ShieldCheck,
   CheckCircle2,
   FileCheck,
-  Microscope,
   FlaskConical,
   Phone,
   ArrowRight,
-  Sparkles,
   Award,
-  Layers,
-  Search,
-  Filter,
 } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
-import {
-  QualityPageData,
-  QualityLifecycleStage,
-  QualityDirective,
-} from "@/data/qualityPageData";
+import { QualityPageData } from "@/data/qualityPageData";
 
 interface QualityInteractiveShowcaseProps {
   data: QualityPageData;

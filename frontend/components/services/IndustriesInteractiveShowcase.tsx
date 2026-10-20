@@ -9,8 +9,6 @@ import {
   ChevronRight,
   Phone,
   ArrowRight,
-  ArrowUpRight,
-  Sparkles,
   ShieldCheck,
   Check,
   Maximize2,

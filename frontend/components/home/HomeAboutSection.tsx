@@ -2,18 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Phone,
-  ArrowRight,
-  Droplets,
-  Flame,
-  ShieldCheck,
-  Activity,
-  CheckCircle2,
-  Sparkles,
-} from "lucide-react";
+import { Phone, ArrowRight, Sparkles } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
-import { HOME_ABOUT_DATA, BusinessAreaCard } from "@/data/heroBannerData";
+import { HOME_ABOUT_DATA } from "@/data/heroBannerData";
 
 // function getBusinessAreaIcon(type: BusinessAreaCard["iconType"]) {
 //   switch (type) {
