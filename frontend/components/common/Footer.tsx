@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, ShieldCheck, MapPin, FileText } from "lucide-react";
+import { Mail, Phone, MapPin, FileText } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { FOOTER_DATA } from "@/data/footerData";
 import { SOCIAL_MEDIA_LINKS, CONTACT_DETAILS } from "@/data/socialMediaData";

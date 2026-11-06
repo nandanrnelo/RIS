@@ -10,6 +10,13 @@ export interface ContactDetails {
   email: string;
   phone: string;
   gstin: string;
+  proprietor: {
+    name: string;
+    shortName: string;
+    designation: string;
+    email: string;
+    state: string;
+  };
   address: {
     buildingNo: string;
     buildingName: string;
@@ -28,6 +35,13 @@ export const CONTACT_DETAILS: ContactDetails = {
   email: "info@rischem.com",
   phone: "044 42805983",
   gstin: "29DPWPM9883R1ZZ",
+  proprietor: {
+    name: "Manjunatha Kumar Kuruba",
+    shortName: "Manjunath",
+    designation: "Proprietor",
+    email: "manjunath@rischem.com",
+    state: "Karnataka",
+  },
   address: {
     buildingNo: "No. 95/1",
     buildingName: "Visrhuthi Nivasa",

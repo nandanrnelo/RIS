@@ -33,6 +33,13 @@ export interface ContactPageData {
   headlineLine2: string;
   leadParagraph: string;
   breadcrumbs: Array<{ label: string; href: string }>;
+  proprietor: {
+    name: string;
+    shortName: string;
+    designation: string;
+    email: string;
+    state: string;
+  };
   office: {
     title: string;
     gstin: string;
@@ -78,6 +85,7 @@ export const CONTACT_PAGE_DATA: ContactPageData = {
     { label: "Home", href: "/" },
     { label: "Contact Us", href: "/contact" },
   ],
+  proprietor: CONTACT_DETAILS.proprietor,
   office: {
     title: "Corporate Headquarters & Technical Service Bureau",
     gstin: CONTACT_DETAILS.gstin,
@@ -116,6 +124,14 @@ export const CONTACT_PAGE_DATA: ContactPageData = {
       href: `mailto:${CONTACT_DETAILS.email}`,
       description: "Direct routing for RFQs, tenders, and technical drawings",
       badge: "Official Inquiries",
+    },
+    {
+      id: "proprietor",
+      title: "Proprietor & Executive Desk",
+      value: CONTACT_DETAILS.proprietor.email,
+      href: `mailto:${CONTACT_DETAILS.proprietor.email}`,
+      description: `${CONTACT_DETAILS.proprietor.name} (${CONTACT_DETAILS.proprietor.designation})`,
+      badge: "Executive Contact",
     },
     {
       id: "headquarters",

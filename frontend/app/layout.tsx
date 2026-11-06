@@ -16,7 +16,11 @@ export const metadata: Metadata = {
   description:
     "Reflex Industrial Solutions (RIS) is an elite water management agency catering to water-related solutions and chemical treatments across the entire gamut of industries.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo/logo.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
   },
 };
 
