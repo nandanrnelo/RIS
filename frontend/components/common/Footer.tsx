@@ -98,33 +98,6 @@ export default function Footer() {
                 </div>
               </Link>
 
-              {/* Dedicated ISO 9001:2015 & GST Registration Capsules */}
-              <div className="flex flex-wrap items-center gap-2 pt-0.5">
-                <div
-                  className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-medium tracking-wide shadow-xs backdrop-blur-md"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
-                    border: "1px solid rgba(255, 255, 255, 0.15)",
-                    color: COLOUR_PALETTE.secondary,
-                  }}
-                >
-                  <ShieldCheck className="h-3.5 w-3.5 text-[#B8892D]" />
-                  <span>{FOOTER_DATA.company.isoCertification}</span>
-                </div>
-
-                <div
-                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-medium tracking-wide shadow-xs backdrop-blur-md"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
-                    border: "1px solid rgba(255, 255, 255, 0.15)",
-                    color: COLOUR_PALETTE.secondary,
-                  }}
-                >
-                  <FileText className="h-3.5 w-3.5 text-[#B8892D]" />
-                  <span>GSTIN: {CONTACT_DETAILS.gstin}</span>
-                </div>
-              </div>
-
               {/* Description Text */}
               <p
                 className="max-w-sm text-sm leading-relaxed opacity-90"

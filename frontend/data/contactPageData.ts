@@ -168,12 +168,6 @@ export const CONTACT_PAGE_DATA: ContactPageData = {
         "All uploaded water reports, P&ID schematics, and plant telemetry remain strictly confidential.",
       badge: "100% Confidential",
     },
-    {
-      title: "Pan-India Field Engineers",
-      description:
-        "Mobile field service engineers available for on-site plant surveys, sampling, and commissioning nationwide.",
-      badge: "Nationwide Reach",
-    },
   ],
   industryOptions: [
     { id: "refinery-gas", name: "Refinery and Gas Processing" },

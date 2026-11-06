@@ -121,6 +121,20 @@ export default function HeroBannerCarousel() {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-14">
           {/* ================= LEFT SIDE: CONTENT ================= */}
           <div className="flex flex-col justify-center lg:col-span-7 xl:col-span-7">
+            {/* Welcome Greeting — first sentence shown on the page */}
+            <p
+              className="mb-5 text-sm font-medium sm:text-base"
+              style={{ color: COLOUR_PALETTE.primaryDark, opacity: 0.75 }}
+            >
+              👋 Welcome to{" "}
+              <span
+                className="font-bold"
+                style={{ color: COLOUR_PALETTE.primaryDark, opacity: 1 }}
+              >
+                Reflex Industrial Solutions
+              </span>
+            </p>
+
             {/* Slide Tagline Eyebrow Pill */}
             <div className="mb-4 flex items-center gap-3">
               <div
