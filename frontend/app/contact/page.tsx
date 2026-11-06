@@ -120,6 +120,17 @@ export default function ContactPage() {
               <Mail className="h-4 w-4 text-stone-600" />
               <span>Email: {data.contactChannels[1].value}</span>
             </a>
+
+            <a
+              href={`mailto:${data.proprietor.email}`}
+              className="inline-flex items-center gap-2.5 rounded-full border border-stone-300 bg-white/80 px-6 py-3 text-xs font-bold tracking-wider text-stone-800 uppercase shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:shadow active:scale-95"
+            >
+              <Mail className="h-4 w-4 text-stone-600" />
+              <span>
+                Proprietor ({data.proprietor.shortName}):{" "}
+                {data.proprietor.email}
+              </span>
+            </a>
           </div>
         </section>
 

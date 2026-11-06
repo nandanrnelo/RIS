@@ -195,6 +195,33 @@ export default function Footer() {
                   <span className="truncate">{CONTACT_DETAILS.email}</span>
                 </a>
 
+                {/* Proprietor Direct Email */}
+                <a
+                  href={`mailto:${CONTACT_DETAILS.proprietor.email}`}
+                  className="flex items-center gap-2.5 transition-colors duration-200"
+                  style={{ color: COLOUR_PALETTE.cream, opacity: 0.85 }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = COLOUR_PALETTE.accent;
+                    e.currentTarget.style.opacity = "1";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = COLOUR_PALETTE.cream;
+                    e.currentTarget.style.opacity = "0.85";
+                  }}
+                >
+                  <Mail
+                    className="h-4 w-4 shrink-0"
+                    style={{ color: COLOUR_PALETTE.accent }}
+                  />
+                  <span className="truncate">
+                    {CONTACT_DETAILS.proprietor.email}{" "}
+                    <span className="text-[11px] opacity-75">
+                      ({CONTACT_DETAILS.proprietor.shortName} –{" "}
+                      {CONTACT_DETAILS.proprietor.designation})
+                    </span>
+                  </span>
+                </a>
+
                 <a
                   href={`tel:${CONTACT_DETAILS.phone.replace(/\s+/g, "")}`}
                   className="flex items-center gap-2.5 transition-colors duration-200"
