@@ -28,7 +28,7 @@ export function ContactTriageBar() {
           />
         </span>
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold tracking-wider text-stone-800 uppercase">
+          <div className="flex items-center gap-2 text-xs font-bold text-stone-800">
             <span>Bengaluru Central Triage Active</span>
             <span
               className="hidden rounded-full px-2 py-0.5 text-[10px] font-bold text-white sm:inline-block"

@@ -9,6 +9,7 @@ export interface SocialMediaLink {
 export interface ContactDetails {
   email: string;
   phone: string;
+  gstin: string;
   address: {
     buildingNo: string;
     buildingName: string;
@@ -24,8 +25,9 @@ export interface ContactDetails {
 }
 
 export const CONTACT_DETAILS: ContactDetails = {
-  email: "info@ris-industries.com",
+  email: "info@rischem.com",
   phone: "044 42805983",
+  gstin: "29DPWPM9883R1ZZ",
   address: {
     buildingNo: "No. 95/1",
     buildingName: "Visrhuthi Nivasa",

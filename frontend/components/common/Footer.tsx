@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, ShieldCheck, MapPin } from "lucide-react";
+import { Mail, Phone, ShieldCheck, MapPin, FileText } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { FOOTER_DATA } from "@/data/footerData";
 import { SOCIAL_MEDIA_LINKS, CONTACT_DETAILS } from "@/data/socialMediaData";
@@ -90,7 +90,7 @@ export default function Footer() {
                     Reflex Industrial Solutions
                   </span>
                   <span
-                    className="text-[10px] font-bold tracking-widest uppercase"
+                    className="text-[11px] font-semibold tracking-wider"
                     style={{ color: COLOUR_PALETTE.accent }}
                   >
                     Engineering & Services
@@ -98,10 +98,10 @@ export default function Footer() {
                 </div>
               </Link>
 
-              {/* Dedicated ISO 9001:2015 Accreditation Pill */}
-              <div>
+              {/* Dedicated ISO 9001:2015 & GST Registration Capsules */}
+              <div className="flex flex-wrap items-center gap-2 pt-0.5">
                 <div
-                  className="inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-[10px] font-bold tracking-widest uppercase shadow-xs backdrop-blur-md"
+                  className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-medium tracking-wide shadow-xs backdrop-blur-md"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.08)",
                     border: "1px solid rgba(255, 255, 255, 0.15)",
@@ -110,6 +110,18 @@ export default function Footer() {
                 >
                   <ShieldCheck className="h-3.5 w-3.5 text-[#B8892D]" />
                   <span>{FOOTER_DATA.company.isoCertification}</span>
+                </div>
+
+                <div
+                  className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-medium tracking-wide shadow-xs backdrop-blur-md"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    color: COLOUR_PALETTE.secondary,
+                  }}
+                >
+                  <FileText className="h-3.5 w-3.5 text-[#B8892D]" />
+                  <span>GSTIN: {CONTACT_DETAILS.gstin}</span>
                 </div>
               </div>
 
@@ -259,6 +271,26 @@ export default function Footer() {
                     {CONTACT_DETAILS.address.pinCode}
                   </span>
                 </a>
+
+                {/* Official GST Registration Number */}
+                <div
+                  className="flex items-center gap-2.5 pt-0.5 text-xs"
+                  style={{ color: COLOUR_PALETTE.cream, opacity: 0.85 }}
+                >
+                  <FileText
+                    className="h-4 w-4 shrink-0"
+                    style={{ color: COLOUR_PALETTE.accent }}
+                  />
+                  <span>
+                    GSTIN:{" "}
+                    <span
+                      className="font-semibold"
+                      style={{ color: COLOUR_PALETTE.cream }}
+                    >
+                      {CONTACT_DETAILS.gstin}
+                    </span>
+                  </span>
+                </div>
               </div>
 
               {/* Circular Social Media Buttons dynamically loaded from data/socialMediaData.ts */}

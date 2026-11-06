@@ -63,7 +63,7 @@ export function ContactForm({
               style={{ backgroundColor: COLOUR_PALETTE.accent }}
             />
             <span
-              className="text-xs font-bold tracking-widest uppercase"
+              className="text-xs font-semibold text-stone-700"
               style={{ color: COLOUR_PALETTE.primaryDark }}
             >
               Technical Consultation & RFQ
@@ -131,7 +131,7 @@ export function ContactForm({
         <div className="space-y-1.5">
           <label
             htmlFor={nameInputId}
-            className="block text-xs font-bold tracking-wide text-stone-700 uppercase"
+            className="block text-xs font-semibold text-stone-700"
           >
             Full Name <span className="text-red-500">*</span>
           </label>
@@ -163,7 +163,7 @@ export function ContactForm({
         <div className="space-y-1.5">
           <label
             htmlFor={emailInputId}
-            className="block text-xs font-bold tracking-wide text-stone-700 uppercase"
+            className="block text-xs font-semibold text-stone-700"
           >
             Work / Corporate Email <span className="text-red-500">*</span>
           </label>
@@ -198,7 +198,7 @@ export function ContactForm({
         <div className="space-y-1.5">
           <label
             htmlFor={phoneInputId}
-            className="block text-xs font-bold tracking-wide text-stone-700 uppercase"
+            className="block text-xs font-semibold text-stone-700"
           >
             Contact Phone / Mobile <span className="text-red-500">*</span>
           </label>
@@ -230,7 +230,7 @@ export function ContactForm({
         <div className="space-y-1.5">
           <label
             htmlFor={companyInputId}
-            className="block text-xs font-bold tracking-wide text-stone-700 uppercase"
+            className="block text-xs font-semibold text-stone-700"
           >
             Company / Plant Facility <span className="text-red-500">*</span>
           </label>
@@ -265,7 +265,7 @@ export function ContactForm({
         <div className="space-y-1.5">
           <label
             htmlFor={industryInputId}
-            className="block text-xs font-bold tracking-wide text-stone-700 uppercase"
+            className="block text-xs font-semibold text-stone-700"
           >
             Industry Sector <span className="text-red-500">*</span>
           </label>
@@ -305,7 +305,7 @@ export function ContactForm({
         <div className="space-y-1.5">
           <label
             htmlFor={inquiryTypeInputId}
-            className="block text-xs font-bold tracking-wide text-stone-700 uppercase"
+            className="block text-xs font-semibold text-stone-700"
           >
             Inquiry Scope <span className="text-red-500">*</span>
           </label>
@@ -347,7 +347,7 @@ export function ContactForm({
         <div className="flex items-center justify-between">
           <label
             htmlFor={messageInputId}
-            className="block text-xs font-bold tracking-wide text-stone-700 uppercase"
+            className="block text-xs font-semibold text-stone-700"
           >
             Requirement Details & Operating Parameters{" "}
             <span className="text-red-500">*</span>
@@ -393,7 +393,7 @@ export function ContactForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="group relative flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold tracking-wider text-white uppercase shadow-lg transition-all duration-300 hover:brightness-105 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-75"
+          className="group relative flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:brightness-105 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-75"
           style={{ backgroundColor: COLOUR_PALETTE.primaryDark }}
         >
           {isSubmitting ? (

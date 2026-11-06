@@ -35,6 +35,7 @@ export interface ContactPageData {
   breadcrumbs: Array<{ label: string; href: string }>;
   office: {
     title: string;
+    gstin: string;
     building: string;
     street: string;
     area: string;
@@ -79,6 +80,7 @@ export const CONTACT_PAGE_DATA: ContactPageData = {
   ],
   office: {
     title: "Corporate Headquarters & Technical Service Bureau",
+    gstin: CONTACT_DETAILS.gstin,
     building: "No. 95/1, Visrhuthi Nivasa",
     street: "7th Cross, MSR Layout",
     area: "Avalahalli",

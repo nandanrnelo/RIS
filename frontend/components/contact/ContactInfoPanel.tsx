@@ -12,6 +12,7 @@ import {
   ExternalLink,
   ShieldCheck,
   CheckCircle2,
+  FileText,
 } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { CONTACT_PAGE_DATA } from "@/data/contactPageData";
@@ -40,7 +41,7 @@ export function ContactInfoPanel() {
         <div className="space-y-6">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-stone-500 uppercase">
+              <div className="flex items-center gap-2 text-xs font-semibold text-stone-500">
                 <Building2
                   className="h-4 w-4"
                   style={{ color: COLOUR_PALETTE.accent }}
@@ -90,6 +91,37 @@ export function ContactInfoPanel() {
             </div>
           </div>
 
+          {/* Official GST Registration */}
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-stone-200/70 bg-stone-50/80 px-4 py-3">
+            <div className="flex items-center gap-2.5">
+              <div
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
+                style={{
+                  backgroundColor: `${COLOUR_PALETTE.accent}18`,
+                  color: COLOUR_PALETTE.accent,
+                }}
+              >
+                <FileText className="h-4 w-4" />
+              </div>
+              <div>
+                <span className="block text-[11px] font-medium text-stone-500">
+                  GST Identification Number (GSTIN)
+                </span>
+                <span className="text-xs font-bold tracking-wider text-stone-900 sm:text-sm">
+                  {data.office.gstin}
+                </span>
+              </div>
+            </div>
+            <span
+              className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold text-emerald-800"
+              style={{
+                backgroundColor: `${COLOUR_PALETTE.primaryDark}15`,
+              }}
+            >
+              Verified Active
+            </span>
+          </div>
+
           {/* Contact Channels Grid */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {/* Direct Phone */}
@@ -108,7 +140,7 @@ export function ContactInfoPanel() {
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <span className="block text-[11px] font-semibold text-stone-500 uppercase">
+                  <span className="block text-[11px] font-semibold text-stone-500">
                     Technical Hotline
                   </span>
                   <span className="text-sm font-bold text-stone-900">
@@ -135,7 +167,7 @@ export function ContactInfoPanel() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
-                  <span className="block text-[11px] font-semibold text-stone-500 uppercase">
+                  <span className="block text-[11px] font-semibold text-stone-500">
                     Official Inquiry Desk
                   </span>
                   <span className="block truncate text-sm font-bold text-stone-900">
@@ -185,7 +217,7 @@ export function ContactInfoPanel() {
             href={data.office.googleMapsDirectionsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-stone-300/80 bg-white px-4 py-3 text-xs font-bold tracking-wider text-stone-800 uppercase shadow-sm transition-all duration-200 hover:bg-stone-50 hover:shadow"
+            className="group flex w-full items-center justify-center gap-2 rounded-2xl border border-stone-300/80 bg-white px-4 py-3 text-xs font-bold text-stone-800 shadow-sm transition-all duration-200 hover:bg-stone-50 hover:shadow"
           >
             <MapPin className="h-4 w-4 text-stone-600" />
             <span>Open Google Maps Directions</span>
@@ -202,7 +234,7 @@ export function ContactInfoPanel() {
           borderColor: `${COLOUR_PALETTE.secondary}70`,
         }}
       >
-        <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-stone-500 uppercase">
+        <div className="flex items-center gap-2 text-xs font-semibold text-stone-500">
           <ShieldCheck
             className="h-4 w-4"
             style={{ color: COLOUR_PALETTE.primaryDark }}
@@ -226,7 +258,7 @@ export function ContactInfoPanel() {
                     {pillar.title}
                   </h4>
                   <span
-                    className="rounded px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase"
+                    className="rounded px-2 py-0.5 text-[10px] font-semibold"
                     style={{
                       backgroundColor: `${COLOUR_PALETTE.accent}15`,
                       color: COLOUR_PALETTE.accent,

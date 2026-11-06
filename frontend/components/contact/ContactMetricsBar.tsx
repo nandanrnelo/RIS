@@ -24,7 +24,7 @@ export function ContactMetricsBar() {
           >
             {qm.value}
           </span>
-          <span className="block text-xs font-bold tracking-wider text-stone-800 uppercase">
+          <span className="block text-xs font-bold text-stone-800">
             {qm.label}
           </span>
           <span className="block text-[11px] text-stone-500">{qm.detail}</span>

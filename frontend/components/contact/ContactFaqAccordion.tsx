@@ -24,7 +24,7 @@ export function ContactFaqAccordion() {
             style={{ backgroundColor: COLOUR_PALETTE.accent }}
           />
           <span
-            className="text-xs font-bold tracking-widest uppercase"
+            className="text-xs font-semibold"
             style={{ color: COLOUR_PALETTE.primaryDark }}
           >
             Client Inquiries

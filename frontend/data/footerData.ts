@@ -7,6 +7,7 @@ export interface FooterConfig {
   company: {
     name: string;
     isoCertification: string;
+    gstin: string;
     description: string;
     readMoreLink: string;
   };
@@ -25,7 +26,8 @@ export interface FooterConfig {
 export const FOOTER_DATA: FooterConfig = {
   company: {
     name: "Reflex Industrial Solutions",
-    isoCertification: "AN ISO 9001:2015 CERTIFIED COMPANY",
+    isoCertification: "ISO 9001:2015 Certified",
+    gstin: "29DPWPM9883R1ZZ",
     description:
       "We are Reflex Industrial Solutions. An elite water management agency that caters to the water related problems of all types and diversity. The company offers water management solutions to entire gamut of industries.",
     readMoreLink: "/about",
@@ -39,7 +41,7 @@ export const FOOTER_DATA: FooterConfig = {
     { label: "Contact Us", href: "/contact" },
   ],
   workingHours: {
-    title: "working hours",
+    title: "Working Hours",
     schedule: "Mon – Sat: 10.00am to 6.00pm",
   },
   getInTouch: {

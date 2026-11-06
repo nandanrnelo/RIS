@@ -101,12 +101,12 @@ export function ContactFileUpload({
         <div className="flex items-center gap-2">
           <label
             htmlFor="document-upload"
-            className="text-xs font-bold tracking-wide text-stone-800 uppercase"
+            className="text-xs font-semibold text-stone-800"
           >
             Technical Document Attachment
           </label>
           <span
-            className="rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase"
+            className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
             style={{
               backgroundColor: `${COLOUR_PALETTE.secondary}50`,
               color: COLOUR_PALETTE.primaryDark,
