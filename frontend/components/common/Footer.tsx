@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone, ShieldCheck } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { FOOTER_DATA } from "@/data/footerData";
 import { SOCIAL_MEDIA_LINKS, CONTACT_DETAILS } from "@/data/socialMediaData";
@@ -58,79 +59,57 @@ export default function Footer() {
 
           {/* 4 Column Grid */}
           <div className="grid grid-cols-1 items-start gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-            {/* Column 1: Company Profile with White/Cream Logo Card */}
+            {/* Column 1: Company Profile with Integrated Brand Identity */}
             <div className="space-y-4 lg:col-span-4">
-              {/* Logo Badge Card */}
-              <div
-                className="inline-block rounded-xl px-5 py-3.5 shadow-md transition-transform duration-300 hover:scale-102"
-                style={{
-                  backgroundColor: COLOUR_PALETTE.cream,
-                  border: `1px solid ${COLOUR_PALETTE.secondary}`,
-                }}
+              {/* Brand Header: Emblem Tile + Typography */}
+              <Link
+                href="/"
+                className="group inline-flex items-center gap-3.5 transition-transform duration-200 hover:opacity-95"
+                aria-label="Reflex Industrial Solutions Homepage"
               >
-                <div className="flex flex-col items-center justify-center text-center">
-                  {/* SVG Emblem with Project Palette */}
-                  <div className="flex items-center gap-2.5">
-                    <div
-                      className="flex h-9 w-9 items-center justify-center rounded-lg shadow-inner"
-                      style={{
-                        backgroundColor: COLOUR_PALETTE.primaryDark,
-                        border: `1.5px solid ${COLOUR_PALETTE.accent}`,
-                      }}
-                    >
-                      <svg
-                        viewBox="0 0 32 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                      >
-                        <polygon
-                          points="16,3 28,10 28,22 16,29 4,22 4,10"
-                          stroke={COLOUR_PALETTE.secondary}
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <circle
-                          cx="16"
-                          cy="16"
-                          r="3"
-                          fill={COLOUR_PALETTE.accent}
-                        />
-                        <path
-                          d="M16 7V11M16 21V25M8 12L11.5 14M20.5 18L24 20M8 20L11.5 18M20.5 14L24 12"
-                          stroke={COLOUR_PALETTE.cream}
-                          strokeWidth="1.2"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </div>
-                    <div className="text-left">
-                      <span
-                        className="block text-base leading-tight font-black tracking-tight"
-                        style={{ color: COLOUR_PALETTE.primaryDark }}
-                      >
-                        {FOOTER_DATA.company.name}
-                      </span>
-                      <span
-                        className="block text-[8.5px] font-bold tracking-widest uppercase"
-                        style={{ color: COLOUR_PALETTE.accent }}
-                      >
-                        Engineering & Services
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* ISO Certificate Banner */}
-                  <div
-                    className="mt-2 border-t pt-1.5 text-[8px] font-bold tracking-wider uppercase"
-                    style={{
-                      borderColor: `${COLOUR_PALETTE.secondary}80`,
-                      color: COLOUR_PALETTE.primaryDark,
-                    }}
+                <div
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl shadow-md transition-transform duration-300 group-hover:scale-105"
+                  style={{
+                    backgroundColor: COLOUR_PALETTE.cream,
+                    border: `1.5px solid ${COLOUR_PALETTE.accent}`,
+                  }}
+                >
+                  <Image
+                    src="/logo/logo.png"
+                    alt="Reflex Industrial Solutions Emblem"
+                    width={44}
+                    height={44}
+                    className="h-9 w-9 object-contain"
+                  />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <span
+                    className="text-lg leading-tight font-black tracking-tight sm:text-xl"
+                    style={{ color: COLOUR_PALETTE.cream }}
                   >
-                    {FOOTER_DATA.company.isoCertification}
-                  </div>
+                    Reflex Industrial Solutions
+                  </span>
+                  <span
+                    className="text-[10px] font-bold tracking-widest uppercase"
+                    style={{ color: COLOUR_PALETTE.accent }}
+                  >
+                    Engineering & Services
+                  </span>
+                </div>
+              </Link>
+
+              {/* Dedicated ISO 9001:2015 Accreditation Pill */}
+              <div>
+                <div
+                  className="inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-[10px] font-bold tracking-widest uppercase shadow-xs backdrop-blur-md"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    color: COLOUR_PALETTE.secondary,
+                  }}
+                >
+                  <ShieldCheck className="h-3.5 w-3.5 text-[#B8892D]" />
+                  <span>{FOOTER_DATA.company.isoCertification}</span>
                 </div>
               </div>
 

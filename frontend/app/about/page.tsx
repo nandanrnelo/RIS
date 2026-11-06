@@ -7,7 +7,6 @@ import {
   Home,
   ArrowRight,
   ShieldCheck,
-  Droplets,
 } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { ABOUT_PAGE_DATA } from "@/data/aboutPageData";
@@ -346,12 +345,15 @@ export default function AboutPage() {
           className="flex flex-col items-center justify-between gap-6 pt-2 sm:flex-row"
         >
           <div className="flex items-center gap-3">
-            <span
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white shadow-sm"
-              style={{ backgroundColor: COLOUR_PALETTE.primaryDark }}
-            >
-              <Droplets className="h-5 w-5" />
-            </span>
+            <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-stone-200/90 bg-white p-1 shadow-xs">
+              <Image
+                src="/logo/logo.png"
+                alt="Reflex Industrial Solutions Emblem"
+                width={40}
+                height={40}
+                className="h-full w-full object-contain"
+              />
+            </div>
             <div>
               <span className="block text-sm font-bold text-stone-900">
                 Reflex Industrial Solutions

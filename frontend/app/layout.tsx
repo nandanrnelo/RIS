@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   title: "Reflex Industrial Solutions - Water Management & Chemical Solutions",
   description:
     "Reflex Industrial Solutions (RIS) is an elite water management agency catering to water-related solutions and chemical treatments across the entire gamut of industries.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

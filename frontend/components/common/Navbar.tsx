@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronRight, ArrowRight, Phone } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
@@ -70,63 +71,31 @@ export default function Navbar() {
         <Link
           href="/"
           onClick={closeMenu}
-          className="group flex items-center gap-2.5 transition-opacity duration-200 hover:opacity-95 sm:gap-3"
+          className="group flex items-center transition-opacity duration-200 hover:opacity-95"
           aria-label="Reflex Industrial Solutions Homepage"
         >
-          {/* Rounded-Full Industrial Shield Emblem */}
-          <div
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full shadow-xs transition-transform duration-300 group-hover:scale-105 sm:h-11 sm:w-11"
-            style={{
-              backgroundColor: COLOUR_PALETTE.primaryDark,
-              border: `1.5px solid ${COLOUR_PALETTE.accent}`,
-            }}
-          >
-            <svg
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 transition-transform duration-500 group-hover:rotate-45 sm:h-5.5 sm:w-5.5"
-            >
-              <polygon
-                points="16,3 28,10 28,22 16,29 4,22 4,10"
-                stroke={COLOUR_PALETTE.secondary}
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <circle cx="16" cy="16" r="3" fill={COLOUR_PALETTE.accent} />
-              <path
-                d="M16 7V11M16 21V25M8 12L11.5 14M20.5 18L24 20M8 20L11.5 18M20.5 14L24 12"
-                stroke={COLOUR_PALETTE.cream}
-                strokeWidth="1.2"
-                strokeLinecap="round"
-              />
-            </svg>
+          {/* Mobile view (< sm): Standalone Circular Emblem Mark */}
+          <div className="relative flex h-10 w-10 shrink-0 items-center justify-center sm:hidden">
+            <Image
+              src="/logo/logo.png"
+              alt="Reflex Industrial Solutions"
+              width={40}
+              height={40}
+              priority
+              className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </div>
 
-          {/* Brand Typography */}
-          <div className="flex flex-col justify-center">
-            <span
-              className="flex items-center text-lg leading-none font-black tracking-tight sm:text-2xl"
-              style={{ color: COLOUR_PALETTE.primaryDark }}
-            >
-              RIS
-              <span
-                className="ml-1.5 rounded-full px-2 py-0.5 text-[9px] font-bold tracking-widest uppercase sm:text-[10px]"
-                style={{
-                  backgroundColor: `${COLOUR_PALETTE.accent}20`,
-                  color: COLOUR_PALETTE.accent,
-                }}
-              >
-                Solutions
-              </span>
-            </span>
-            <span
-              className="mt-0.5 hidden text-[9px] font-semibold tracking-wider uppercase opacity-75 sm:block sm:text-[10px]"
-              style={{ color: COLOUR_PALETTE.primaryDark }}
-            >
-              Reflex Industrial Solutions
-            </span>
+          {/* Tablet & Desktop (>= sm): Full horizontal lockup (Emblem + Name) */}
+          <div className="relative hidden items-center sm:flex">
+            <Image
+              src="/logo/logo-name.png"
+              alt="Reflex Industrial Solutions"
+              width={260}
+              height={64}
+              priority
+              className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-102 md:h-11"
+            />
           </div>
         </Link>
 
@@ -238,9 +207,26 @@ export default function Navbar() {
           }}
         >
           <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between px-3 pb-1 text-[11px] font-bold tracking-widest text-[#B8892D] uppercase">
-              <span>Navigation Menu</span>
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#B8892D]" />
+            <div
+              className="flex items-center justify-between border-b px-2 pb-2.5"
+              style={{ borderColor: `${COLOUR_PALETTE.secondary}60` }}
+            >
+              <Image
+                src="/logo/logo-name.png"
+                alt="Reflex Industrial Solutions"
+                width={190}
+                height={48}
+                className="h-8 w-auto object-contain"
+              />
+              <span
+                className="rounded-full px-2.5 py-0.5 text-[9px] font-bold tracking-widest uppercase"
+                style={{
+                  backgroundColor: `${COLOUR_PALETTE.accent}15`,
+                  color: COLOUR_PALETTE.accent,
+                }}
+              >
+                Menu
+              </span>
             </div>
 
             {NAV_ITEMS.map((item) => {

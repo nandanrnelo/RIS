@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { ContactTriageBar } from "./ContactTriageBar";
 import { ContactInfoPanel } from "./ContactInfoPanel";
@@ -8,6 +8,8 @@ import { ContactForm } from "./ContactForm";
 import { ContactSuccessCard } from "./ContactSuccessCard";
 import { ContactMetricsBar } from "./ContactMetricsBar";
 import { ContactFaqAccordion } from "./ContactFaqAccordion";
+import { GoogleSheetsConfigModal } from "./GoogleSheetsConfigModal";
+import { googleSheetsService } from "@/services/googleSheetsService";
 import type { FormState, FormErrors, SubmissionSuccessData } from "./types";
 
 export function ContactInteractiveShowcase() {
@@ -27,6 +29,13 @@ export function ContactInteractiveShowcase() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionSuccess, setSubmissionSuccess] =
     useState<SubmissionSuccessData | null>(null);
+  const [isConfigModalOpen, setIsConfigModalOpen] = useState(false);
+
+  const isSheetConfigured = useSyncExternalStore(
+    googleSheetsService.subscribe,
+    () => googleSheetsService.isConfigured(),
+    () => false
+  );
 
   // Field validator helper
   const validateField = (
@@ -147,13 +156,11 @@ export function ContactInteractiveShowcase() {
       return;
     }
 
-    // Pure client-side submission animation and confirmation state
+    // Pure client-side submission directly to Google Spreadsheet Webhook
     setIsSubmitting(true);
     setErrors({});
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 600));
-
       const randomHex = Math.random()
         .toString(36)
         .substring(2, 8)
@@ -163,6 +170,33 @@ export function ContactInteractiveShowcase() {
         .slice(0, 10)
         .replace(/-/g, "");
       const generatedTicketId = `RIS-REQ-${dateSegment}-${randomHex}`;
+
+      const attachmentInfo = form.file
+        ? `${form.file.name} (${(form.file.size / (1024 * 1024)).toFixed(2)} MB)`
+        : null;
+
+      // Direct submission from browser to Google Apps Script Web App
+      const result = await googleSheetsService.submitInquiry({
+        ticketId: generatedTicketId,
+        fullName: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        company: form.company,
+        industry: form.industry,
+        inquiryType: form.inquiryType,
+        message: form.message,
+        attachmentName: attachmentInfo,
+      });
+
+      if (!result.success) {
+        setErrors({
+          general:
+            result.message ||
+            "Unable to log inquiry to spreadsheet. Please call our technical hotline at 044 42805983.",
+        });
+        setIsSubmitting(false);
+        return;
+      }
 
       setSubmissionSuccess({
         ticketId: generatedTicketId,
@@ -177,6 +211,8 @@ export function ContactInteractiveShowcase() {
           hour: "2-digit",
           minute: "2-digit",
         }),
+        sheetStatus: result.mode,
+        sheetMessage: result.message,
       });
 
       setIsSubmitting(false);
@@ -237,6 +273,8 @@ export function ContactInteractiveShowcase() {
                 form={form}
                 errors={errors}
                 isSubmitting={isSubmitting}
+                isSheetConfigured={isSheetConfigured}
+                onConfigureSheet={() => setIsConfigModalOpen(true)}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 onFileSelect={handleFileSelect}
@@ -253,6 +291,13 @@ export function ContactInteractiveShowcase() {
 
       {/* 4. Frequently Asked Questions Accordion */}
       <ContactFaqAccordion />
+
+      {/* 5. Google Sheets Webhook Configuration Modal */}
+      <GoogleSheetsConfigModal
+        isOpen={isConfigModalOpen}
+        onClose={() => setIsConfigModalOpen(false)}
+        onConfigChanged={() => {}}
+      />
     </div>
   );
 }

@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useId } from "react";
-import { ChevronDown, Send, ShieldCheck, AlertCircle } from "lucide-react";
+import {
+  ChevronDown,
+  Send,
+  ShieldCheck,
+  AlertCircle,
+  FileSpreadsheet,
+} from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { CONTACT_PAGE_DATA } from "@/data/contactPageData";
 import { ContactFileUpload } from "./ContactFileUpload";
@@ -11,6 +17,8 @@ interface ContactFormProps {
   form: FormState;
   errors: FormErrors;
   isSubmitting: boolean;
+  isSheetConfigured?: boolean;
+  onConfigureSheet?: () => void;
   onChange: (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -26,6 +34,8 @@ export function ContactForm({
   form,
   errors,
   isSubmitting,
+  isSheetConfigured = false,
+  onConfigureSheet,
   onChange,
   onBlur,
   onFileSelect,
@@ -45,18 +55,50 @@ export function ContactForm({
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-6">
       {/* Form Masthead Header */}
-      <div className="space-y-2 border-b border-stone-200/80 pb-6">
-        <div className="flex items-center gap-2">
-          <span
-            className="h-2 w-2 rounded-full"
-            style={{ backgroundColor: COLOUR_PALETTE.accent }}
-          />
-          <span
-            className="text-xs font-bold tracking-widest uppercase"
-            style={{ color: COLOUR_PALETTE.primaryDark }}
-          >
-            Technical Consultation & RFQ
-          </span>
+      <div className="space-y-3 border-b border-stone-200/80 pb-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <span
+              className="h-2 w-2 rounded-full"
+              style={{ backgroundColor: COLOUR_PALETTE.accent }}
+            />
+            <span
+              className="text-xs font-bold tracking-widest uppercase"
+              style={{ color: COLOUR_PALETTE.primaryDark }}
+            >
+              Technical Consultation & RFQ
+            </span>
+          </div>
+
+          {/* Google Sheets Sync Status Pill & Setup Trigger */}
+          {onConfigureSheet && (
+            <button
+              type="button"
+              onClick={onConfigureSheet}
+              className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold transition-all duration-200 hover:shadow-xs ${
+                isSheetConfigured
+                  ? "border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100/70"
+                  : "border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-300 hover:bg-stone-100"
+              }`}
+              title="Click to view or update Google Spreadsheet Webhook configuration"
+            >
+              <FileSpreadsheet className="h-3.5 w-3.5" />
+              {isSheetConfigured ? (
+                <>
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                  </span>
+                  <span>Sheets Sync (Row 2 Top)</span>
+                </>
+              ) : (
+                <>
+                  <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                  <span>Connect Google Sheet</span>
+                </>
+              )}
+            </button>
+          )}
         </div>
 
         <h3
@@ -70,7 +112,8 @@ export function ContactForm({
           All text and selection fields are{" "}
           <strong className="text-red-600">required (*)</strong>. Water analysis
           reports and document attachments are{" "}
-          <strong className="text-stone-800">optional</strong>.
+          <strong className="text-stone-800">optional</strong>. Inquiries are
+          recorded in Google Sheets at Row 2.
         </p>
       </div>
 
@@ -356,7 +399,7 @@ export function ContactForm({
           {isSubmitting ? (
             <>
               <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-              <span>Transmitting Inquiry to BangaloreDesk...</span>
+              <span>Logging to Google Spreadsheet (Row 2)...</span>
             </>
           ) : (
             <>
@@ -374,8 +417,8 @@ export function ContactForm({
           style={{ color: COLOUR_PALETTE.accent }}
         />
         <span>
-          Protected by commercial NDA. Your plant telemetry & data remain 100%
-          confidential.
+          Protected by commercial NDA. Inquiries are automatically synchronized
+          to Google Spreadsheets with reverse chronological ordering.
         </span>
       </div>
     </form>

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import {
   Building2,
   MapPin,
@@ -37,20 +38,31 @@ export function ContactInfoPanel() {
         />
 
         <div className="space-y-6">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-stone-500 uppercase">
-              <Building2
-                className="h-4 w-4"
-                style={{ color: COLOUR_PALETTE.accent }}
-              />
-              <span>Operational Headquarters</span>
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-stone-500 uppercase">
+                <Building2
+                  className="h-4 w-4"
+                  style={{ color: COLOUR_PALETTE.accent }}
+                />
+                <span>Operational Headquarters</span>
+              </div>
+              <h3
+                className="mt-1 text-xl font-bold tracking-tight sm:text-2xl"
+                style={{ color: COLOUR_PALETTE.primaryDark }}
+              >
+                {data.office.title}
+              </h3>
             </div>
-            <h3
-              className="mt-1 text-xl font-bold tracking-tight sm:text-2xl"
-              style={{ color: COLOUR_PALETTE.primaryDark }}
-            >
-              {data.office.title}
-            </h3>
+            <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-stone-200/80 bg-stone-50/80 p-1.5 shadow-xs">
+              <Image
+                src="/logo/logo.png"
+                alt="Reflex Industrial Solutions Emblem"
+                width={44}
+                height={44}
+                className="h-full w-full object-contain"
+              />
+            </div>
           </div>
 
           {/* Physical Address */}

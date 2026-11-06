@@ -31,4 +31,6 @@ export interface SubmissionSuccessData {
   hasAttachment: boolean;
   attachmentName: string | null;
   submittedAt: string;
+  sheetStatus: "live" | "demo";
+  sheetMessage?: string;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
+import Image from "next/image";
 import {
   CheckCircle2,
   Copy,
@@ -9,10 +9,12 @@ import {
   FileCheck,
   Headphones,
   RotateCcw,
+  FileSpreadsheet,
   ArrowRight,
 } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import type { SubmissionSuccessData } from "./types";
+import Link from "next/link";
 
 interface ContactSuccessCardProps {
   data: SubmissionSuccessData;
@@ -31,17 +33,27 @@ export function ContactSuccessCard({ data, onReset }: ContactSuccessCardProps) {
   };
 
   return (
-    <div className="animate-in fade-in zoom-in-95 space-y-8 py-4 duration-300">
-      {/* Header Checkmark */}
+    <div className="animate-in fade-in zoom-in-95 space-y-6 py-4 duration-300">
+      {/* Header Brand & Checkmark */}
       <div className="space-y-3 text-center">
+        <div className="flex justify-center pb-1">
+          <Image
+            src="/logo/logo-name.png"
+            alt="Reflex Industrial Solutions"
+            width={200}
+            height={52}
+            className="h-9 w-auto object-contain"
+          />
+        </div>
+
         <div
-          className="mx-auto flex h-16 w-16 items-center justify-center rounded-full shadow-inner"
+          className="mx-auto flex h-14 w-14 items-center justify-center rounded-full shadow-inner"
           style={{
             backgroundColor: `${COLOUR_PALETTE.primaryDark}15`,
             color: COLOUR_PALETTE.primaryDark,
           }}
         >
-          <CheckCircle2 className="h-10 w-10" />
+          <CheckCircle2 className="h-8 w-8" />
         </div>
 
         <span
@@ -96,6 +108,48 @@ export function ContactSuccessCard({ data, onReset }: ContactSuccessCardProps) {
             </>
           )}
         </button>
+      </div>
+
+      {/* Google Spreadsheet Sync Confirmation Capsule */}
+      <div
+        className={`flex items-start gap-3 rounded-2xl border p-4 text-xs sm:text-sm ${
+          data.sheetStatus === "live"
+            ? "border-emerald-200 bg-emerald-50/80 text-emerald-950"
+            : "border-amber-200 bg-amber-50/80 text-amber-950"
+        }`}
+      >
+        <div
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl ${
+            data.sheetStatus === "live"
+              ? "bg-emerald-600 text-white"
+              : "bg-amber-600 text-white"
+          }`}
+        >
+          <FileSpreadsheet className="h-4 w-4" />
+        </div>
+        <div className="space-y-0.5">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-bold text-stone-900">
+              {data.sheetStatus === "live"
+                ? "Logged to Google Spreadsheet (Row 2 • Top of Sheet)"
+                : "Verified in Demo Queue"}
+            </span>
+            <span
+              className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase ${
+                data.sheetStatus === "live"
+                  ? "bg-emerald-200/80 text-emerald-900"
+                  : "bg-amber-200/80 text-amber-900"
+              }`}
+            >
+              {data.sheetStatus === "live" ? "Live Synced" : "Demo Mode"}
+            </span>
+          </div>
+          <p className="text-xs text-stone-600">
+            {data.sheetStatus === "live"
+              ? "New row successfully inserted at Row 2 directly beneath headers. Prior inquiries shifted downward."
+              : "Inquiry verified locally. To stream submissions live into your Google Spreadsheet at Row 2, connect your Google Apps Script Webhook URL."}
+          </p>
+        </div>
       </div>
 
       {/* Submitted Recap Grid */}
