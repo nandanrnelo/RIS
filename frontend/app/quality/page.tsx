@@ -15,6 +15,21 @@ export const metadata: Metadata = {
       "Zero-defect quality governance and analytical testing laboratory protocols across all industrial chemical operations.",
     type: "website",
     url: "/quality",
+    images: [
+      {
+        url: "/logo/logo.png",
+        width: 1076,
+        height: 1076,
+        alt: "Reflex Industrial Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Quality Policy | Reflex Industrial Solutions",
+    description:
+      "Zero-defect quality governance across all industrial chemical operations.",
+    images: ["/logo/logo.png"],
   },
 };
 

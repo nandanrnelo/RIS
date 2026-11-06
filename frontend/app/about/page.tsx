@@ -21,6 +21,21 @@ export const metadata: Metadata = {
       "Promoted and managed by water treatment professionals with over 100 years of combined experience in industrial water management.",
     type: "website",
     url: "/about",
+    images: [
+      {
+        url: "/logo/logo.png",
+        width: 1076,
+        height: 1076,
+        alt: "Reflex Industrial Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "About Us | Reflex Industrial Solutions",
+    description:
+      "Promoted and managed by water treatment professionals with over 100 years of combined experience in industrial water management.",
+    images: ["/logo/logo.png"],
   },
 };
 

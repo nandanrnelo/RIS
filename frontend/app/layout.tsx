@@ -12,6 +12,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://rischem.com"
+  ),
   title: "Reflex Industrial Solutions - Water Management & Chemical Solutions",
   description:
     "Reflex Industrial Solutions (RIS) is an elite water management agency catering to water-related solutions and chemical treatments across the entire gamut of industries.",
@@ -20,7 +23,35 @@ export const metadata: Metadata = {
       { url: "/favicon.ico", sizes: "any" },
       { url: "/logo/logo.png", type: "image/png" },
     ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
     shortcut: "/favicon.ico",
+  },
+  openGraph: {
+    title:
+      "Reflex Industrial Solutions - Water Management & Chemical Solutions",
+    description:
+      "Reflex Industrial Solutions (RIS) is an elite water management agency catering to water-related solutions and chemical treatments across the entire gamut of industries.",
+    url: "https://ris-wheat.vercel.app",
+    siteName: "Reflex Industrial Solutions",
+    images: [
+      {
+        url: "/logo/logo.png",
+        width: 1076,
+        height: 1076,
+        alt: "Reflex Industrial Solutions Emblem",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Reflex Industrial Solutions",
+    description:
+      "Elite water management agency and industrial chemical solutions across process industries.",
+    images: ["/logo/logo.png"],
   },
 };
 

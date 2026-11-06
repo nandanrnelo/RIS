@@ -15,6 +15,21 @@ export const metadata: Metadata = {
       "Total water management and specialty chemical solutions across 14 major process industries.",
     type: "website",
     url: "/services",
+    images: [
+      {
+        url: "/logo/logo.png",
+        width: 1076,
+        height: 1076,
+        alt: "Reflex Industrial Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Industries Served | Reflex Industrial Solutions",
+    description:
+      "Specialty chemical solutions across 14 major process industries.",
+    images: ["/logo/logo.png"],
   },
 };
 

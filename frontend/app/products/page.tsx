@@ -17,6 +17,21 @@ export const metadata: Metadata = {
       "Comprehensive chemical formulations and equipment systems for industrial water management.",
     type: "website",
     url: "/products",
+    images: [
+      {
+        url: "/logo/logo.png",
+        width: 1076,
+        height: 1076,
+        alt: "Reflex Industrial Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Chemical Formulations | Reflex Industrial Solutions",
+    description:
+      "High-performance chemical formulations and utility water treatment systems.",
+    images: ["/logo/logo.png"],
   },
 };
 

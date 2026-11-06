@@ -16,6 +16,21 @@ export const metadata: Metadata = {
       "Connect with certified water treatment professionals and chemical engineers for industrial water management.",
     type: "website",
     url: "/contact",
+    images: [
+      {
+        url: "/logo/logo.png",
+        width: 1076,
+        height: 1076,
+        alt: "Reflex Industrial Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Contact Us | Reflex Industrial Solutions",
+    description:
+      "Connect with certified water treatment professionals and chemical engineers.",
+    images: ["/logo/logo.png"],
   },
 };
 
