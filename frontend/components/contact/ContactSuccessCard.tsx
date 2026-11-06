@@ -76,7 +76,7 @@ export function ContactSuccessCard({ data, onReset }: ContactSuccessCardProps) {
         <p className="mx-auto max-w-lg text-sm text-stone-600">
           Your technical consultation request has been officially logged and
           routed to our senior industrial water treatment engineers in
-          Bangalore.
+          Bengaluru.
         </p>
       </div>
 

@@ -35,12 +35,14 @@ export interface ContactPageData {
   breadcrumbs: Array<{ label: string; href: string }>;
   office: {
     title: string;
+    building: string;
     street: string;
     area: string;
+    landmark: string;
+    district: string;
     cityStateZip: string;
     country: string;
     fullAddress: string;
-    landmark: string;
     googleMapsEmbedQuery: string;
     googleMapsDirectionsUrl: string;
     operatingHours: {
@@ -77,16 +79,19 @@ export const CONTACT_PAGE_DATA: ContactPageData = {
   ],
   office: {
     title: "Corporate Headquarters & Technical Service Bureau",
-    street: "No. 8, Kamala Nagar",
-    area: "Porur",
-    cityStateZip: "Bangalore– 600116, Karnataka",
+    building: "No. 95/1, Visrhuthi Nivasa",
+    street: "7th Cross, MSR Layout",
+    area: "Avalahalli",
+    landmark: "Singanayakanahalli",
+    district: "Bengaluru Urban",
+    cityStateZip: "Bengaluru – 560064, Karnataka",
     country: "India",
     fullAddress:
-      "No. 8, Kamala Nagar, Porur, Bangalore– 600116, Karnataka, India",
-    landmark: "Near Porur Junction, Greater BangaloreIndustrial Corridor",
-    googleMapsEmbedQuery: "Kamala+Nagar+Porur+Bangalore+600116",
+      "No. 95/1, Visrhuthi Nivasa, 7th Cross, MSR Layout, Avalahalli, Near Singanayakanahalli, Bengaluru Urban, Bengaluru, Karnataka – 560064, India",
+    googleMapsEmbedQuery:
+      "Visrhuthi+Nivasa+7th+Cross+MSR+Layout+Avalahalli+Bengaluru+560064",
     googleMapsDirectionsUrl:
-      "https://www.google.com/maps/search/?api=1&query=Kamala+Nagar+Porur+Bangalore+600116",
+      "https://www.google.com/maps/search/?api=1&query=Visrhuthi+Nivasa+7th+Cross+MSR+Layout+Avalahalli+Bengaluru+560064",
     operatingHours: {
       days: "Monday – Saturday",
       hours: "10:00 AM – 6:00 PM IST",
@@ -113,9 +118,10 @@ export const CONTACT_PAGE_DATA: ContactPageData = {
     {
       id: "headquarters",
       title: "Corporate Headquarters",
-      value: "Porur, Bangalore– 600116",
-      href: "https://www.google.com/maps/search/?api=1&query=Kamala+Nagar+Porur+Bangalore+600116",
-      description: "No. 8, Kamala Nagar, Porur, Bangalore, Karnataka, India",
+      value: "Avalahalli, Bengaluru – 560064",
+      href: "https://www.google.com/maps/search/?api=1&query=Visrhuthi+Nivasa+7th+Cross+MSR+Layout+Avalahalli+Bengaluru+560064",
+      description:
+        "No. 95/1, Visrhuthi Nivasa, 7th Cross, MSR Layout, Avalahalli, Near Singanayakanahalli, Bengaluru – 560064, Karnataka, India",
       badge: "ISO 9001:2015 Center",
     },
   ],
@@ -126,9 +132,9 @@ export const CONTACT_PAGE_DATA: ContactPageData = {
       detail: "Average turnaround for critical plant inquiries",
     },
     {
-      value: "Bangalore, KA",
+      value: "Bengaluru, KA",
       label: "Operational HQ",
-      detail: "Strategic hub with nationwide logistical reach",
+      detail: "No. 95/1, Visrhuthi Nivasa, MSR Layout, Avalahalli",
     },
     {
       value: "100+ Years",
@@ -258,7 +264,7 @@ export const CONTACT_PAGE_DATA: ContactPageData = {
       question:
         "How quickly will an engineer respond to our technical inquiry?",
       answer:
-        "Our engineering triage team in Bangalorereviews every submitted request within 2 business hours. For urgent plant shutdowns or critical dosing emergencies, call our technical hotline at 044 42805983 for immediate escalation.",
+        "Our engineering triage team in Bengaluru reviews every submitted request within 2 business hours. For urgent plant shutdowns or critical dosing emergencies, call our technical hotline at 044 42805983 for immediate escalation.",
     },
     {
       question: "What types of documents can I attach to the inquiry?",

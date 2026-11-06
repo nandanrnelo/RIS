@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, ShieldCheck } from "lucide-react";
+import { Mail, Phone, ShieldCheck, MapPin } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
 import { FOOTER_DATA } from "@/data/footerData";
 import { SOCIAL_MEDIA_LINKS, CONTACT_DETAILS } from "@/data/socialMediaData";
@@ -228,6 +228,36 @@ export default function Footer() {
                     style={{ color: COLOUR_PALETTE.accent }}
                   />
                   <span>{CONTACT_DETAILS.phone}</span>
+                </a>
+
+                {/* Physical Address */}
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Visrhuthi+Nivasa+7th+Cross+MSR+Layout+Avalahalli+Bengaluru+560064"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2.5 transition-colors duration-200"
+                  style={{ color: COLOUR_PALETTE.cream, opacity: 0.85 }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = COLOUR_PALETTE.accent;
+                    e.currentTarget.style.opacity = "1";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = COLOUR_PALETTE.cream;
+                    e.currentTarget.style.opacity = "0.85";
+                  }}
+                >
+                  <MapPin
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    style={{ color: COLOUR_PALETTE.accent }}
+                  />
+                  <span className="text-xs leading-relaxed">
+                    {CONTACT_DETAILS.address.buildingNo},{" "}
+                    {CONTACT_DETAILS.address.buildingName},{" "}
+                    {CONTACT_DETAILS.address.street},{" "}
+                    {CONTACT_DETAILS.address.locality},{" "}
+                    {CONTACT_DETAILS.address.city} –{" "}
+                    {CONTACT_DETAILS.address.pinCode}
+                  </span>
                 </a>
               </div>
 

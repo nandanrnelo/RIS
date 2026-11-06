@@ -29,7 +29,7 @@ export function ContactTriageBar() {
         </span>
         <div>
           <div className="flex items-center gap-2 text-xs font-bold tracking-wider text-stone-800 uppercase">
-            <span>BangaloreCentral Triage Active</span>
+            <span>Bengaluru Central Triage Active</span>
             <span
               className="hidden rounded-full px-2 py-0.5 text-[10px] font-bold text-white sm:inline-block"
               style={{ backgroundColor: COLOUR_PALETTE.primaryDark }}

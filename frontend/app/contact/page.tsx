@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title:
     "Contact Us | Reflex Industrial Solutions - Water Management & Chemical Solutions",
   description:
-    "Engage directly with certified water treatment specialists and chemical engineers at Reflex Industrial Solutions. Request technical water audits, specialty chemical RFQs, or lab water testing in Bangalore, India.",
+    "Engage directly with certified water treatment specialists and chemical engineers at Reflex Industrial Solutions. Request technical water audits, specialty chemical RFQs, or lab water testing in Bengaluru, India.",
   openGraph: {
     title: "Contact Us | Reflex Industrial Solutions - Direct Technical Desk",
     description:

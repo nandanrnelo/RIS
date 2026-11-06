@@ -9,11 +9,36 @@ export interface SocialMediaLink {
 export interface ContactDetails {
   email: string;
   phone: string;
+  address: {
+    buildingNo: string;
+    buildingName: string;
+    street: string;
+    landmark: string;
+    locality: string;
+    city: string;
+    district: string;
+    state: string;
+    pinCode: string;
+    fullAddress: string;
+  };
 }
 
 export const CONTACT_DETAILS: ContactDetails = {
   email: "info@ris-industries.com",
   phone: "044 42805983",
+  address: {
+    buildingNo: "No. 95/1",
+    buildingName: "Visrhuthi Nivasa",
+    street: "7th Cross, MSR Layout",
+    landmark: "Singanayakanahalli",
+    locality: "Avalahalli",
+    city: "Bengaluru",
+    district: "Bengaluru Urban",
+    state: "Karnataka",
+    pinCode: "560064",
+    fullAddress:
+      "No. 95/1, Visrhuthi Nivasa, 7th Cross, MSR Layout, Avalahalli, Near Singanayakanahalli, Bengaluru Urban, Bengaluru, Karnataka – 560064, India",
+  },
 };
 
 export const SOCIAL_MEDIA_LINKS: SocialMediaLink[] = [

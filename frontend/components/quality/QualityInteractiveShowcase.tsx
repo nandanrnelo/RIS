@@ -2,14 +2,11 @@
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   ShieldCheck,
   CheckCircle2,
   FileCheck,
   FlaskConical,
-  Phone,
-  ArrowRight,
   Award,
 } from "lucide-react";
 import { COLOUR_PALETTE } from "@/constants/colour";
@@ -337,47 +334,6 @@ export function QualityInteractiveShowcase({
                 ))}
               </tbody>
             </table>
-          </div>
-        </div>
-      </div>
-
-      {/* ================================================================ */}
-      {/* SECTION D: TRUST GUARANTEE BANNER & AUDIT REQUEST HUB            */}
-      {/* ================================================================ */}
-      <div className="overflow-hidden rounded-[2.25rem] border border-stone-300/80 bg-gradient-to-br from-white via-[#FAF7F2] to-white p-6 shadow-xl sm:p-10 lg:p-12">
-        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
-          <div className="max-w-2xl space-y-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-stone-300/80 bg-white px-3.5 py-1 text-xs font-bold text-stone-800 shadow-2xs">
-              <Award className="h-4 w-4 text-[#B8892D]" />
-              <span>Customer Verification Guarantee</span>
-            </div>
-            <h3 className="text-2xl font-extrabold tracking-tight text-[#1A2010] sm:text-3xl">
-              Require Batch COA or Facility Water Audit?
-            </h3>
-            <p className="text-sm leading-relaxed font-normal text-stone-600 sm:text-base">
-              Every shipment is accompanied by a batch-specific Certificate of
-              Quality. Our laboratory team also provides independent on-site
-              water quality surveys, scale analytics, and titration checks.
-            </p>
-          </div>
-
-          <div className="flex shrink-0 flex-wrap items-center gap-3">
-            <a
-              href={data.contact.phoneHref}
-              className="inline-flex items-center gap-2.5 rounded-full border border-stone-300 bg-white px-5 py-3 text-xs font-bold text-stone-900 shadow-sm transition-all hover:border-stone-400 active:scale-95 sm:text-sm"
-            >
-              <Phone className="h-4 w-4 text-[#4F5B2A]" />
-              <span>{data.contact.phone}</span>
-            </a>
-
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-bold text-white shadow-md transition-all duration-300 hover:shadow-lg active:scale-95 sm:text-sm"
-              style={{ backgroundColor: COLOUR_PALETTE.primaryDark }}
-            >
-              <span>Schedule Quality Audit</span>
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
           </div>
         </div>
       </div>

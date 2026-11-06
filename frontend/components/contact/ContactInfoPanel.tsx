@@ -77,13 +77,15 @@ export function ContactInfoPanel() {
               <MapPin className="h-5 w-5" />
             </div>
             <div className="space-y-1 text-xs sm:text-sm">
-              <p className="font-bold text-stone-900">{data.office.street}</p>
-              <p className="text-stone-700">{data.office.area}</p>
-              <p className="font-semibold text-stone-900">
-                {data.office.cityStateZip}
+              <p className="font-bold text-stone-900">{data.office.building}</p>
+              <p className="text-stone-800">
+                {data.office.street}, {data.office.area}
               </p>
-              <p className="text-[11px] font-medium text-stone-500">
-                {data.office.landmark}
+              <p className="text-[11px] font-medium text-stone-600">
+                Nearby Landmark: {data.office.landmark} ({data.office.district})
+              </p>
+              <p className="pt-0.5 font-semibold text-stone-900">
+                {data.office.cityStateZip}, {data.office.country}
               </p>
             </div>
           </div>
